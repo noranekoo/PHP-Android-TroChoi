@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\LinhVuc;
 class LinhVucController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class LinhVucController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -23,7 +23,8 @@ class LinhVucController extends Controller
      */
     public function create()
     {
-        //
+        $dsLinhvuc = LinhVuc::all();
+        return view('ds-linh-vuc',compact('dsLinhvuc'));
     }
 
     /**
