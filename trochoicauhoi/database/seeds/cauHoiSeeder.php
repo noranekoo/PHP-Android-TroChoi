@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class cauHoiSeeder extends Seeder
+class CauHoiSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class cauHoiSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('cau_hoi')->insert([
+        DB::table('cau_hoi')->insert([
     		'noi_dung'=>'Thằng Luân mập không ^-^ ?',
     		'linh_vuc_id'=>'1',
     		'phuong_an_a'=>'Thấy cũng mập',

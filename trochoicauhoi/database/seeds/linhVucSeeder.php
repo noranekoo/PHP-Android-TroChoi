@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class linhVucSeeder extends Seeder
+class LinhVucSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class linhVucSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('linh_vuc')->insert([
+        DB::table('linh_vuc')->insert([
     		'ten_linh_vuc'=>'Cà khịa'
     	]);
     	DB::table('linh_vuc')->insert([
