@@ -14,3 +14,4 @@
 Route::get('/', function () {
     return view('layout');
 });
+Route::get('/linh-vuc', 'LinhVucController@create');
