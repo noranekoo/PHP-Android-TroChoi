@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\CauHoi;
 class CauHoiController extends Controller
 {
     /**
@@ -23,7 +23,8 @@ class CauHoiController extends Controller
      */
     public function create()
     {
-        //
+        $dsCauHoi = CauHoi::all();
+        return view('ds-cau-hoi',compact('dsCauHoi'));
     }
 
     /**

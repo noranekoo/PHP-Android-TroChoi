@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\LinhVuc;
 class LinhVucSeeder extends Seeder
 {
     /**
@@ -29,5 +29,6 @@ class LinhVucSeeder extends Seeder
     	DB::table('linh_vuc')->insert([
     		'ten_linh_vuc'=>'Du Lịch'
     	]);
+        
     }
 }

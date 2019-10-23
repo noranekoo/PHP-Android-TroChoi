@@ -15,3 +15,5 @@ Route::get('/', function () {
     return view('layout');
 });
 Route::get('/linh-vuc', 'LinhVucController@create');
+Route::get('cau-hoi','CauHoiController@create');
+Route::post('cau-hoi/{id}','CauHoiController@edit')
