@@ -59,7 +59,6 @@ class LinhVucController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -71,7 +70,10 @@ class LinhVucController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $linhvuc = LinhVuc::find($id);
+        $linhvuc->ten_linh_vuc = $request->input('ten_linh_vuc');
+        $linhvuc->save();
+        return redirect()->route('linhvuc')->with('success','Cập nhật thành công!!');
     }
 
     /**

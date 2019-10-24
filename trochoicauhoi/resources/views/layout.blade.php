@@ -367,8 +367,8 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="#">
-                                    <i class="la la-cube"></i>Apps <div class="arrow-down"></div></a>
+                                <a href="{{route('linhvuc')}}">
+                                    <i class="la la-cube"></i>Lĩnh vực <div class="arrow-down"></div></a>
                                 <ul class="submenu">
                                     <li>
                                         <a href="apps-calendar.html">Calendar</a>
