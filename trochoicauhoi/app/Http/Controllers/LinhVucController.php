@@ -46,7 +46,9 @@ class LinhVucController extends Controller
      */
     public function show($id)
     {
-        //
+        $dsLinhvuc = LinhVuc::all();
+        $dsLinhvuc2 = LinhVuc::find($id);
+        return view('ds-linh-vuc',compact('dsLinhvuc','dsLinhvuc2'));
     }
 
     /**

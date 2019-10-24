@@ -16,6 +16,6 @@ Route::get('/', function () {
 });
 Route::get('/linh-vuc', 'LinhVucController@create');
 Route::get('cau-hoi','CauHoiController@create');
-Route::post('cau-hoi/{id}','CauHoiController@edit');
-Route::get('/test/{id}',function($id){echo 'ID là: '.$id;
-});
+Route::get('linh-vuc/{id}','LinhVucController@show');
+// Route::get('/test/{id}',function($id){echo 'ID là: '.$id;
+// });

@@ -8,7 +8,7 @@
 				<p class="text-muted font-13 mb-4">
 					DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction
 					function:
-					<code>$().DataTable();</code>.
+					
 				</p>
 
 				<table id="basic-datatable" class="table dt-responsive nowrap">

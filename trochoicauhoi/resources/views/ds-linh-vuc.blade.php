@@ -1,16 +1,9 @@
 @extends('layout')
 @section('main-content')
 <div class="row">
-	<div class="col-12">
+	<div class="col-lg-6">
 		<div class="card">
 			<div class="card-body">
-				<h2 class="header-title">Danh Sách Lĩnh Vực</h2>
-				<p class="text-muted font-13 mb-4">
-					DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction
-					function:
-					<code>$().DataTable();</code>.
-				</p>
-
 				<table id="basic-datatable" class="table dt-responsive nowrap">
 					<thead>
 						<tr>
@@ -26,7 +19,7 @@
 							<td>{{$lv->id}}</td>
 							<td>{{$lv->ten_linh_vuc}}</td>
 							<td>
-								<a href="{{ url('/test/'.$lv->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline"></i></a> 
+								<a href="{{ url('/linh-vuc/'.$lv->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline"></i></a> 
 								<a href="#" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></a>
 							</td>
 
@@ -38,6 +31,34 @@
 			</div> <!-- end card body-->
 		</div> <!-- end card -->
 	</div><!-- end col-->
+			<div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mb-3 header-title">Chi tiết lĩnh vực</h4>
+
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">ID</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{ isset($dsLinhvuc2->id) ? $dsLinhvuc2->id : ''}}" aria-describedby="emailHelp"disabled="true">
+                                        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Tên lĩnh vực</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tên lĩnh vực"
+                                        value="{{ isset($dsLinhvuc2->id) ? $dsLinhvuc2->ten_linh_vuc : ''}}" >
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkmeout0">
+                                            <label class="custom-control-label" for="checkmeout0">Check me out !</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                </form>
+
+                            </div> <!-- end card-body-->
+                        </div> <!-- end card-->
+                    </div>
 </div>
 @endsection
 
