@@ -11,12 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layout');
+Route::get('/',function(){
+	return view('layout');
 });
 Route::get('cau-hoi','CauHoiController@create');
-Route::prefix('linhvuc')->group(function(){
+Route::prefix('linh-vuc')->group(function(){
+	Route::prefix('thung-rac')->group(function(){
+		Route::get('','LinhVucController@onlyTrashed')->name('linhvuc.thungrac');
+		Route::get('/khoi-phuc/{id}','LinhVucController@restore');
+		Route::get('/xoa/{id}','LinhVucController@forceDelete');
+	});
+	Route::get('/them-moi',function(){
+		return view('them-moi-linh-vuc');
+	})->name('linhvuc.themmoi');
 	Route::get('/', 'LinhVucController@create')->name('linhvuc');
-	Route::get('{id}','LinhVucController@show')->name('linhvuc.get');
-	Route::post('{id}','LinhVucController@update')->name('linhvuc.capnhat');
+	Route::get('/{id}','LinhVucController@show')->name('linhvuc.get');
+	Route::get('xoa/{id}','LinhVucController@Delete');
+	Route::post('/{id}','LinhVucController@update')->name('linhvuc.capnhat');
+	Route::post('','LinhVucController@store')->name('linhvuc.themmoipost');
 });

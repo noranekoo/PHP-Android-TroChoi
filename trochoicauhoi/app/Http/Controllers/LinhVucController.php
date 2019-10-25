@@ -35,7 +35,10 @@ class LinhVucController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $linhvuc = new LinhVuc;
+        $linhvuc->ten_linh_vuc = $request->input('ten_linh_vuc');
+        $linhvuc->save();
+        return redirect()->route('linhvuc')->with('success','Thêm thành công!!');
     }
 
     /**
@@ -85,5 +88,28 @@ class LinhVucController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function Delete($id)
+    {
+        $linhvuc = LinhVuc::find($id);
+        $linhvuc->delete();
+        return redirect()->route('linhvuc')->with('success','Xóa thành công!!');
+    }
+    public function forceDelete($id)
+    {
+        $linhvuc = LinhVuc::onlyTrashed()->get()->find($id);
+        $linhvuc->forceDelete();
+        return redirect()->route('linhvuc.thungrac')->with('success','Xóa thành công!!');
+    }
+     public function restore($id)
+    {
+        $linhvuc = LinhVuc::onlyTrashed()->get()->find($id);
+        $linhvuc->restore();
+        return redirect()->route('linhvuc.thungrac')->with('success','Khôi phục thành công!!');
+    }
+    public function onlyTrashed()
+    {
+        $dsLinhvuc = LinhVuc::onlyTrashed()->get();
+        return view('linh-vuc-trashed',compact('dsLinhvuc'));   
     }
 }

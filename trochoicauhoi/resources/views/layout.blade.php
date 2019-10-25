@@ -367,40 +367,24 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{route('linhvuc')}}">
-                                    <i class="la la-cube"></i>Lĩnh vực <div class="arrow-down"></div></a>
+                                <a href="/linh-vuc">
+                                    <i class="la la-cube"></i>Lĩnh vực <div class="arrow-down"></div>
+                                </a>
                                 <ul class="submenu">
                                     <li>
-                                        <a href="apps-calendar.html">Calendar</a>
+                                        <a href="/linh-vuc">Danh sách lĩnh vực</a>
                                     </li>
                                     <li>
-                                        <a href="apps-contacts.html">Contacts</a>
+                                        <a href="/linh-vuc/them-moi">Thêm mới</a>
                                     </li>
-                                    <li>
-                                        <a href="apps-tickets.html">Tickets</a>
-                                    </li>
-                                    <li class="has-submenu">
-                                        <a href="#">Email <div class="arrow-down"></div></a>
-                                        <ul class="submenu">
-                                            <li>
-                                                <a href="email-inbox.html">Inbox</a>
-                                            </li>
-                                            <li>
-                                                <a href="email-read.html">Read Email</a>
-                                            </li>
-                                            <li>
-                                                <a href="email-compose.html">Compose Email</a>
-                                            </li>
-                                            <li>
-                                                <a href="email-templates.html">Email Templates</a>
-                                            </li>
-                                        </ul>
+                                     <li>
+                                        <a href="/linh-vuc/thung-rac">Thùng rác</a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li class="has-submenu">
-                                <a href="#"> <i class="la la-clone"></i>Layouts <div class="arrow-down"></div></a>
+                                <a href="/cau-hoi"> <i class="la la-clone"></i>Câu hỏi <div class="arrow-down"></div></a>
                                 <ul class="submenu">
                                     <li>
                                         <a href="layouts-topbar-dark.html">Topbar Dark</a>

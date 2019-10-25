@@ -24,8 +24,8 @@
 							<td>{{$lv->id}}</td>
 							<td>{{$lv->ten_linh_vuc}}</td>
 							<td>
-								<a href="{{ url('/linhvuc/'.$lv->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline"></i></a> 
-								<a href="#" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></a>
+								<a href="{{ url('/linh-vuc/'.$lv->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline"></i></a> 
+								<a href="{{ url('/linh-vuc/xoa/'.$lv->id) }}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></a>
 							</td>
 
 						</tr>
