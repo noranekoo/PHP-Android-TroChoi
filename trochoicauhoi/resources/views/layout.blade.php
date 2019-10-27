@@ -399,44 +399,14 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="#"> <i class="la la-briefcase"></i>Elements <div class="arrow-down"></div></a>
-                                <ul class="submenu megamenu">
+                                <a href="#"> <i class="la la-clone"></i>Người chơi <div class="arrow-down"></div></a>
+                                <ul class="submenu">
                                     <li>
-                                        <ul>
-                                            <li>
-                                                <a href="ui-buttons.html">Buttons</a>
-                                            </li>
-                                            <li>
-                                                <a href="ui-cards.html">Cards</a>
-                                            </li>
-                                            <li>
-                                                <a href="ui-tabs-accordions.html">Tabs & Accordions</a>
-                                            </li>
-                                            <li>
-                                                <a href="ui-modals.html">Modals</a>
-                                            </li>
-                                            <li>
-                                                <a href="ui-progress.html">Progress</a>
-                                            </li>
-                                        </ul>
+                                        <a href="/nguoi-choi">Danh sách người chơi</a>
                                     </li>
                                     <li>
-                                        <ul>
-                                            <li>
-                                                <a href="ui-notifications.html">Notifications</a>
-                                            </li>
-                                            <li>
-                                                <a href="ui-general.html">General UI</a>
-                                            </li>
-                                            <li>
-                                                <a href="ui-typography.html">Typography</a>
-                                            </li>
-                                            <li>
-                                                <a href="ui-grid.html">Grid</a>
-                                            </li>
-                                        </ul>
+                                        <a href="/nguoi-choi/thung-rac">Thùng rác</a>
                                     </li>
-                        
                                 </ul>
                             </li>
 

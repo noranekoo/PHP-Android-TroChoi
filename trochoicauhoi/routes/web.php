@@ -13,7 +13,7 @@
 
 Route::get('/',function(){
 	return view('layout');
-});
+})->name('dashboard');
 Route::prefix('cau-hoi')->group(function(){
 	Route::prefix('thung-rac')->group(function(){
 		Route::get('','CauHoiController@onlyTrashed')->name('cauhoi.thungrac');
@@ -45,4 +45,17 @@ Route::prefix('linh-vuc')->group(function(){
 	Route::get('xoa/{id}','LinhVucController@Delete');
 	Route::post('/{id}','LinhVucController@update')->name('linhvuc.capnhat');
 	Route::post('','LinhVucController@store')->name('linhvuc.themmoipost');
+});
+Route::prefix('nguoi-choi')->group(function(){
+	Route::prefix('thung-rac')->group(function(){
+		Route::get('','NguoiChoiController@onlyTrashed')->name('nguoichoi.thungrac');
+		Route::get('/khoi-phuc/{id}','NguoiChoiController@restore');
+		Route::get('/xoa/{id}','NguoiChoiController@forceDelete');
+	});
+	// Route::get('/them-moi',function(){
+	// 	return view('them-moi-nguoi-choi');
+	// })->name('nguoichoi.themmoi');
+	Route::get('/', 'NguoiChoiController@create')->name('nguoichoi');
+	Route::get('xoa/{id}','NguoiChoiController@Delete');
+	Route::post('','NguoiChoiController@store')->name('nguoichoi.themmoipost');
 });

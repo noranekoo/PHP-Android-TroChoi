@@ -46,7 +46,7 @@
 			<div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="mb-3 header-title">Chi tiết lĩnh vực</h4>
+                                <h4 class="mb-3 header-title">Cập nhật lĩnh vực</h4>
                                 <form action="{{ route('linhvuc.capnhat',isset($dsLinhvuc2->id) ? $dsLinhvuc2->id : '1')}}" method="POST">
                                 	@csrf
                                     <div class="form-group">

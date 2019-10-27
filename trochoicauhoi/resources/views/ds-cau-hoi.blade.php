@@ -103,7 +103,7 @@
 <div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="mb-3 header-title">Chi tiết câu hỏi</h4>
+                                <h4 class="mb-3 header-title">Cập nhật câu hỏi</h4>
                                 <form action="{{ route('cauhoi.capnhat',isset($dsCauHoi2->id) ? $dsCauHoi2->id : '')}}" method="POST">
                                 	@csrf
                                     <div class="form-group">

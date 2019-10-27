@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\NguoiChoi;
 class NguoiChoiSeeder extends Seeder
 {
     /**
@@ -16,36 +16,40 @@ class NguoiChoiSeeder extends Seeder
         'mat_khau'=>'123456',
         'email'=>'player1@gmail.com',
         'hinh_dai_dien'=>'',
-        'diem_cao_nhat'=>'1000'
+        'diem_cao_nhat'=>'1000',
+        'credit'=>'0'
     ]);
         NguoiChoi::create([
         'ten_dang_nhap'=>'player2',
         'mat_khau'=>'123456',
         'email'=>'player2@gmail.com',
         'hinh_dai_dien'=>'',
-        'diem_cao_nhat'=>'2000'
+        'diem_cao_nhat'=>'2000',
+        'credit'=>'0'
     ]);
         NguoiChoi::create([
         'ten_dang_nhap'=>'player3',
         'mat_khau'=>'123456',
         'email'=>'player3@gmail.com',
         'hinh_dai_dien'=>'',
-        'diem_cao_nhat'=>'3000'
+        'diem_cao_nhat'=>'3000',
+        'credit'=>'0'
     ]);
         NguoiChoi::create([
         'ten_dang_nhap'=>'player4',
         'mat_khau'=>'123456',
         'email'=>'player4@gmail.com',
         'hinh_dai_dien'=>'',
-        'diem_cao_nhat'=>'4000'
+        'diem_cao_nhat'=>'4000',
+        'credit'=>'0'
     ]);
         NguoiChoi::create([
         'ten_dang_nhap'=>'player5',
         'mat_khau'=>'123456',
         'email'=>'player5@gmail.com',
         'hinh_dai_dien'=>'',
-        'diem_cao_nhat'=>'5000'
+        'diem_cao_nhat'=>'5000',
+        'credit'=>'0'
     ]);
-    }
     }
 }
