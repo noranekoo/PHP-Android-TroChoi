@@ -14,7 +14,23 @@
 Route::get('/',function(){
 	return view('layout');
 });
-Route::get('cau-hoi','CauHoiController@create');
+Route::prefix('cau-hoi')->group(function(){
+	Route::prefix('thung-rac')->group(function(){
+		Route::get('','CauHoiController@onlyTrashed')->name('cauhoi.thungrac');
+		Route::get('/khoi-phuc/{id}','CauHoiController@restore');
+		Route::get('/xoa/{id}','CauHoiController@forceDelete');
+	});
+	Route::get('/them-moi',function(){
+		return view('them-moi-cau-hoi');
+	})->name('cauhoi.themmoi');
+
+	Route::get('xoa/{id}','CauHoiController@Delete');
+	Route::get('','CauHoiController@create')->name('cauhoi');
+	Route::get('/{id}','CauHoiController@show')->name('cauhoi.get');
+	Route::post('/{id}','CauHoiController@update')->name('cauhoi.capnhat');
+	Route::post('','CauHoiController@store')->name('cauhoi.themmoipost');
+
+});
 Route::prefix('linh-vuc')->group(function(){
 	Route::prefix('thung-rac')->group(function(){
 		Route::get('','LinhVucController@onlyTrashed')->name('linhvuc.thungrac');

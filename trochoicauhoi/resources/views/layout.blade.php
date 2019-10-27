@@ -367,7 +367,7 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="/linh-vuc">
+                                <a href="#">
                                     <i class="la la-cube"></i>Lĩnh vực <div class="arrow-down"></div>
                                 </a>
                                 <ul class="submenu">
@@ -384,25 +384,16 @@
                             </li>
 
                             <li class="has-submenu">
-                                <a href="/cau-hoi"> <i class="la la-clone"></i>Câu hỏi <div class="arrow-down"></div></a>
+                                <a href="#"> <i class="la la-clone"></i>Câu hỏi <div class="arrow-down"></div></a>
                                 <ul class="submenu">
                                     <li>
-                                        <a href="layouts-topbar-dark.html">Topbar Dark</a>
+                                        <a href="/cau-hoi">Danh sách câu hỏi</a>
                                     </li>
                                     <li>
-                                        <a href="layouts-menubar-light.html">Menubar Light</a>
+                                        <a href="/cau-hoi/them-moi">Thêm mới</a>
                                     </li>
                                     <li>
-                                        <a href="layouts-center-menu.html">Center Menu</a>
-                                    </li>
-                                    <li>
-                                        <a href="layouts-preloader.html">Preloader</a>
-                                    </li>
-                                    <li>
-                                        <a href="layouts-normal-header.html">Unsticky Header</a>
-                                    </li>
-                                    <li>
-                                        <a href="layouts-boxed.html">Boxed</a>
+                                        <a href="/cau-hoi/thung-rac">Thùng rác</a>
                                     </li>
                                 </ul>
                             </li>

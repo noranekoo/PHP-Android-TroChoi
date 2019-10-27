@@ -5,7 +5,7 @@
             <p>{{ $message }}</p>
         </div>
  @endif
-Thùng rác lĩnh vực
+Thùng rác câu hỏi
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card">
@@ -14,19 +14,22 @@ Thùng rác lĩnh vực
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Tên lĩnh vực</th>
+							<th>Nội dung</th>
+							<th>Lĩnh vực</th>
 							<th></th>
 						</tr>
 					</thead>
 
 					<tbody>
-						@foreach ($dsLinhvuc as $lv)						
+						@foreach ($dsCauHoi as $ch)						
 						<tr>
-							<td>{{$lv->id}}</td>
-							<td>{{$lv->ten_linh_vuc}}</td>
+							<td>{{$ch->id}}</td>
+							<td>{{$ch->noi_dung}}</td>
+<!-- 							<td>{{App\LinhVuc::find($ch->linh_vuc_id)->ten_linh_vuc}}</td>
+ -->
 							<td>
-								<a href="{{ url('/linh-vuc/thung-rac/khoi-phuc/'.$lv->id) }}" class="btn btn-success waves-effect waves-light "><i class="fe-heart"></i></a> 
-								<a href="{{ url('/linh-vuc/thung-rac/xoa/'.$lv->id) }}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></a>
+								<a href="{{ url('/cau-hoi/thung-rac/khoi-phuc/'.$ch->id) }}" class="btn btn-success waves-effect waves-light "><i class="fe-heart"></i></a> 
+								<a href="{{ url('/cau-hoi/thung-rac/xoa/'.$ch->id) }}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></a>
 							</td>
 
 						</tr>

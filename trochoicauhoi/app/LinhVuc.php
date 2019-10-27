@@ -8,4 +8,5 @@ class LinhVuc extends Model
 {
 	use SoftDeletes;
     protected $table = 'linh_vuc';
+  
 }
