@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-class GoiCreditVienController extends Controller
+use App\LinhVuc;
+class LinhVucController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class GoiCreditVienController extends Controller
      */
     public function index()
     {
-        //
+        $linhvuc = LinhVuc::all();
+        return json_decode($linhvuc);
     }
 
     /**

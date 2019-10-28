@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\QuanTriVien;
-use Illuminate\Support\Facades\Auth;
-class QuanTriVienController extends Controller
+
+class CauHoiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,27 +26,7 @@ class QuanTriVienController extends Controller
     {
         //
     }
-    public function dangNhap()
-    {
-        return view('dang-nhap');
-    }
-    public function xuLyDangNhap(Request $request)
-    {
-        $thongtin = $request->only(['ten_dang_nhap','mat_khau']);
-        $qtv = QuanTriVien::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
-        if( $qtv == null )
-        {
-            return "Sai tên đăng nhập";
-            // return view('layout');
-        }
-        if( !Hash::check($thongtin['mat_khau'], $qtv->mat_khau ))
-        {
-            return "Sai mật khẩu";
-        }
-        Auth::login($qtv);
-        // return "Đăng nhập thành công !!";
-        return view('layout');
-    }
+
     /**
      * Store a newly created resource in storage.
      *

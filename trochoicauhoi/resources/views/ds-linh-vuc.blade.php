@@ -11,10 +11,13 @@
             <p>{{ $message }}</p>
         </div>
  @endif
+
 <div class="row">
 	<div class="col-lg-6">
 		 <div class="card">
+
 			<div class="card-body">
+				 
 				<table table id="basic-datatable" class="table dt-responsive nowrap">
 					<thead>
 						<tr>

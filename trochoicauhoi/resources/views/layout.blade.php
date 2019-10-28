@@ -354,7 +354,7 @@
                         <ul class="navigation-menu">
 
                             <li>
-                                <a href="#">
+                                <a href="/">
                                     <i class="la la-dashboard"></i>Dashboards </a>
                                
                             </li>
@@ -399,6 +399,20 @@
                                     </li>
                                     <li>
                                         <a href="/nguoi-choi/thung-rac">Thùng rác</a>
+                                    </li>
+                                </ul>
+                            </li>
+                             <li class="has-submenu">
+                                <a href="#"> <i class="la la-clone"></i>Gói Credit <div class="arrow-down"></div></a>
+                                <ul class="submenu">
+                                    <li>
+                                        <a href="/goi-credit">Danh sách gói Credit</a>
+                                    </li>
+                                    <li>
+                                        <a href="/goi-credit/them-moi">Thêm mới</a>
+                                    </li>
+                                    <li>
+                                        <a href="/goi-credit/thung-rac">Thùng rác</a>
                                     </li>
                                 </ul>
                             </li>
