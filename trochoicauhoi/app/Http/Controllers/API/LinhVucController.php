@@ -14,8 +14,9 @@ class LinhVucController extends Controller
      */
     public function index()
     {
-        $linhvuc = LinhVuc::all();
-        return json_decode($linhvuc);
+        $linhvuc = LinhVuc::all()->random(4);
+        $result = ['success' => true, 'arr'=>$linhvuc];
+        return response()->json($result);
     }
 
     /**
