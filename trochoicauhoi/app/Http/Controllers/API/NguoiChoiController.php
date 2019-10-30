@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\NguoiChoi;
 class NguoiChoiController extends Controller
 {
     /**
@@ -81,5 +81,18 @@ class NguoiChoiController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function layNguoiChoi($id)
+    {
+        $nguoiChoi = NguoiChoi::find($id);
+        $result = ['success'=>true,'data'=>$nguoiChoi];
+        return response()->json($result);
+    } 
+    public function top10()
+    {
+        $top10 = NguoiChoi::orderBy('diem_cao_nhat','desc')->get();
+        
+        $result = ['success'=>true,'data'=>$top10];
+        return response()->json($result);
     }
 }

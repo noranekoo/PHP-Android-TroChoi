@@ -17,3 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('linh-vuc','API\LinhVucController@index');
+Route::get('cau-hoi/{id}','API\CauHoiController@show');
+Route::get('nguoi-choi/{id}','API\NguoiChoiController@layNguoiChoi');	
+Route::get('diem-cao/','API\NguoiChoiController@top10');	
+

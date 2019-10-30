@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\CauHoi;
 class CauHoiController extends Controller
 {
     /**
@@ -46,7 +46,9 @@ class CauHoiController extends Controller
      */
     public function show($id)
     {
-        //
+        $dsCauHoi = CauHoi::find($id);
+        $result = ['success'=>true,'data'=>$dsCauHoi];
+        return response()->json($result);
     }
 
     /**
@@ -57,7 +59,7 @@ class CauHoiController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -80,6 +82,6 @@ class CauHoiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
