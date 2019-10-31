@@ -46,7 +46,7 @@ class QuanTriVienController extends Controller
         }
         Auth::login($qtv);
         // return "Đăng nhập thành công !!";
-        return view('layout');
+        return view('dashboard');
     }
     public function dangXuat()
     {
