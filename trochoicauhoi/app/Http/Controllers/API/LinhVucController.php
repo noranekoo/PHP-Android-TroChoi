@@ -18,7 +18,9 @@ class LinhVucController extends Controller
         $result = ['success' => true, 'arr'=>$linhvuc];
         return response()->json($result);
     }
-
+    public function trangThai(){
+        
+    }
     /**
      * Show the form for creating a new resource.
      *
