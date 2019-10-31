@@ -48,6 +48,11 @@ class QuanTriVienController extends Controller
         // return "Đăng nhập thành công !!";
         return view('layout');
     }
+    public function dangXuat()
+    {
+        Auth::logout();
+        return redirect()->route('dangnhap');
+    }
     /**
      * Store a newly created resource in storage.
      *

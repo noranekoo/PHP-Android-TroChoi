@@ -4,6 +4,8 @@
 <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.css')}}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets/libs/datatables/select.bootstrap4.css')}}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css')}}" rel="stylesheet" type="text/css">
+<!--sweet alert -->
+<link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css')}}" />
 @endsection
 @section('main-content')
  @if ($message = Session::get('success'))
@@ -36,8 +38,8 @@
 							<td>{{$gc->credit}}</td>
 							<td>{{$gc->so_tien}}</td>
 							<td>
-								<a href="{{ url('/goi-credit/'.$gc->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline"></i></a> 
-								<a href="{{ url('/goi-credit/xoa/'.$gc->id) }}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></a>
+								<a href="{{ url('/goi-credit/'.$gc->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline" ></i></a> 
+								<a href="{{ url('/goi-credit/xoa/'.$gc->id) }}" class="btn btn-danger waves-effect waves-light "><i class="mdi mdi-close sa-warning"></i></a>
 							</td>
 
 						</tr>
@@ -89,4 +91,27 @@
 <script src="{{ asset('assets/libs/datatables/dataTables.bootstrap4.js')}}"></script>
 <script src="{{ asset('assets/libs/datatables/dataTables.responsive.min.js')}}"></script>
 <script src="{{ asset('assets/js/pages/datatables.init.js')}}"></script>
+<script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+
+        <!-- Sweet alert init js-->
+        <script>
+        	$(document).on('click','#sa-warning',function(e){
+        		e.preventDefault();
+        		var ch = $(this);
+            Swal.fire({
+                title: "Bạn có chắc chắn muốn xóa?",
+                text: "You won't be able to revert this!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ok!"
+            }).then(function(t) {
+               if(t.value){
+               	ch.parent().submit()}
+                })
+        	})
+        	
+        	
+        </script>
 @endsection

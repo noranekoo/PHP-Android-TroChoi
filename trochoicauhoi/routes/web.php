@@ -14,6 +14,7 @@ Route::get('something',function(){
 	return view('somethingelse');
 });
 Route::get('dang-nhap','QuanTriVienController@dangNhap')->name('dangnhap');
+Route::get('dang-xuat','QuanTriVienController@dangXuat');
 Route::post('dang-nhap','QuanTriVienController@xuLyDangNhap')->name('dangnhap.xuly');
 // Route::middleware('auth')->group(function(){
 	Route::get('/',function(){
@@ -81,4 +82,4 @@ Route::post('dang-nhap','QuanTriVienController@xuLyDangNhap')->name('dangnhap.xu
 		Route::post('','GoiCreditController@store')->name('goicredit.themmoipost');
 
 	});
-// });
+//});
