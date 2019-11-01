@@ -24,7 +24,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-5">
                         <div class="card">
-
+                  
                             <div class="card-body p-4">
                                 
                                 <div class="text-center w-75 m-auto">
@@ -33,7 +33,7 @@
                                     </a>
                                     <p class="text-muted mb-4 mt-3">Nhập vào tên đăng nhập và mật khẩu của bạn để truy cập admin panel</p>
                                 </div>
-
+                            
                                 <h5 class="auth-title"> Đăng nhập </h5>
 
                                 <form action="{{ route('dangnhap.xuly') }}" method="POST" >
@@ -53,6 +53,11 @@
                                             <input type="checkbox" class="custom-control-input" id="checkbox-signin">
                                             <label class="custom-control-label" for="checkbox-signin">Remember me</label>
                                         </div> -->
+                                         @if (\Session::has('success'))
+                                            <div class="alert alert-success">
+                                            <p>{!! \Session::get('success')[0] !!}</p>
+                                            </div>
+                                         @endif
                                     </div>
 
                                     <div class="form-group mb-0 text-center">

@@ -37,12 +37,13 @@ class QuanTriVienController extends Controller
         $qtv = QuanTriVien::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
         if( $qtv == null )
         {
-            return "Sai tên đăng nhập";
+           //return view('dang-nhap')->with('error','Sai tên đăng nhập');
             // return view('layout');
+            return redirect()->back()->with('success', ['your message,here']);
         }
         if( !Hash::check($thongtin['mat_khau'], $qtv->mat_khau ))
         {
-            return "Sai mật khẩu";
+            //return view('dang-nhap')->with('error','Sai mật khẩu');
         }
         Auth::login($qtv);
         // return "Đăng nhập thành công !!";
