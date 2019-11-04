@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\QuanTriVien;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers;
 use App\Http\Requests\DangNhapRequest;
+//use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\QuanTriVien;
 class QuanTriVienController extends Controller
 {
     /**
@@ -50,7 +51,7 @@ class QuanTriVienController extends Controller
         // // return "Đăng nhập thành công !!";
         // return view('dashboard');
         if(Auth::attempt(['ten_dang_nhap'=>$request->ten_dang_nhap,'password'=>$request->mat_khau]))
-            return 'Do chuy';
+            return redirect()->route('dashboard');
             //return redirect()->route('dashboard');
         return redirect('dang-nhap');
 

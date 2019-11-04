@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DangNhapRequest extends FormRequest
@@ -24,7 +24,7 @@ class DangNhapRequest extends FormRequest
     public function rules()
     {
         return [
-            'ten_dang_nhap'=>'required|min:8|max:20',
+            'ten_dang_nhap'=>'required|min:6|max:20',
             'mat_khau'=>'required|min:6|max:20'
         ];
     }
@@ -37,6 +37,6 @@ class DangNhapRequest extends FormRequest
             'mat_khau.required' => 'Chưa nhập mật khẩu !!',
             'mat_khau.min' => 'Mật khẩu không hợp lệ !!',
             'mat_khau.max' => 'Mật khẩu không hợp lệ !!'
-        ]
+        ];
     }
 }
