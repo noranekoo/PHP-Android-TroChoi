@@ -151,7 +151,6 @@
                                 <span class="pro-user-name ml-1">
                                     {{Auth::user()->ho_ten}}
                                     <i class="mdi mdi-chevron-down"></i> 
-                                    }
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">

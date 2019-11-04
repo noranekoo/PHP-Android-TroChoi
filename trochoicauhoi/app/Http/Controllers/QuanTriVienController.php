@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\QuanTriVien;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\DangNhapRequest;
 class QuanTriVienController extends Controller
 {
     /**
@@ -31,23 +32,28 @@ class QuanTriVienController extends Controller
     {
         return view('dang-nhap');
     }
-    public function xuLyDangNhap(Request $request)
+    public function xuLyDangNhap(DangNhapRequest $request)
     {
-        $thongtin = $request->only(['ten_dang_nhap','mat_khau']);
-        $qtv = QuanTriVien::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
-        if( $qtv == null )
-        {
-           //return view('dang-nhap')->with('error','Sai tên đăng nhập');
-            // return view('layout');
-            return redirect()->back()->with('success', ['your message,here']);
-        }
-        if( !Hash::check($thongtin['mat_khau'], $qtv->mat_khau ))
-        {
-            //return view('dang-nhap')->with('error','Sai mật khẩu');
-        }
-        Auth::login($qtv);
-        // return "Đăng nhập thành công !!";
-        return view('dashboard');
+        //$thongtin = $request->only(['ten_dang_nhap','mat_khau']);
+        // $qtv = QuanTriVien::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
+        // if( $qtv == null )
+        // {
+        //    //return view('dang-nhap')->with('error','Sai tên đăng nhập');
+        //     // return view('layout');
+        //     return redirect()->back()->with('success', ['your message,here']);
+        // }
+        // if( !Hash::check($thongtin['mat_khau'], $qtv->mat_khau ))
+        // {
+        //     //return view('dang-nhap')->with('error','Sai mật khẩu');
+        // }
+        // Auth::login($qtv);
+        // // return "Đăng nhập thành công !!";
+        // return view('dashboard');
+        if(Auth::attempt(['ten_dang_nhap'=>$request->ten_dang_nhap,'password'=>$request->mat_khau]))
+            return 'Do chuy';
+            //return redirect()->route('dashboard');
+        return redirect('dang-nhap');
+
     }
     public function dangXuat()
     {

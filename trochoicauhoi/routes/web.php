@@ -13,7 +13,7 @@
 // Route::get('something',function(){
 // 	return view('somethingelse');
 // });
-Route::get('dang-nhap','QuanTriVienController@dangNhap')->name('dangnhap');
+Route::get('dang-nhap','QuanTriVienController@dangNhap')->name('dangnhap')->middleware('guest');
 Route::get('dang-xuat','QuanTriVienController@dangXuat')->name('dangxuat');
 Route::post('dang-nhap','QuanTriVienController@xuLyDangNhap')->name('dangnhap.xuly');
 Route::middleware('auth')->group(function(){
