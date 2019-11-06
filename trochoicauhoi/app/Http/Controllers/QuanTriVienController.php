@@ -53,7 +53,7 @@ class QuanTriVienController extends Controller
         if(Auth::attempt(['ten_dang_nhap'=>$request->ten_dang_nhap,'password'=>$request->mat_khau]))
             return redirect()->route('dashboard');
             //return redirect()->route('dashboard');
-        return redirect('dang-nhap');
+        return redirect('dang-nhap')->with('fail','Đăng nhập thất bại, tên đăng nhập hoặc mật khẩu không chính xác !!');
 
     }
     public function dangXuat()

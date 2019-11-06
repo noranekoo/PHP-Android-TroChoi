@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\NguoiChoi;
+use Illuminate\Support\Facades\Hash;
+
 class NguoiChoiController extends Controller
 {
     /**
@@ -93,6 +95,23 @@ class NguoiChoiController extends Controller
         $top10 = NguoiChoi::orderBy('diem_cao_nhat','desc')->get();
         
         $result = ['success'=>true,'data'=>$top10];
+        return response()->json($result);
+    }
+    public function DangNhap(Request $request)
+    {
+        $thongtin = $request->only(['ten_dang_nhap','mat_khau']);
+        $nguoichoi = NguoiChoi::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
+        if( $nguoichoi == null )
+        {
+           $result = ['success'=>false];
+           return response()->json($result);
+        }
+        if( !Hash::check($thongtin['mat_khau'], $nguoichoi->mat_khau ))
+        {
+            $result = ['success'=>false];
+            return response()->json($result);
+        }
+        $result = ['success'=>true];
         return response()->json($result);
     }
 }

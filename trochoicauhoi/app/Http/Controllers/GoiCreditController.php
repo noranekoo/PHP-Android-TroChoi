@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\GoiCreditRequest;
 use App\GoiCredit;
 class GoiCreditController extends Controller
 {
@@ -33,7 +33,7 @@ class GoiCreditController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GoiCreditRequest $request)
     {
         $goicredit = new GoiCredit;
         $goicredit->ten_goi_credit = $request->input('ten_goi_credit');
@@ -74,7 +74,7 @@ class GoiCreditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GoiCreditRequest $request, $id)
     {
         $goicredit = goicredit::find($id);
         $goicredit->ten_goi_credit = $request->input('ten_goi_credit');

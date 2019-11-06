@@ -7,50 +7,19 @@
 @endsection
 @section('main-content')
  @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">x</span>
+</button>
+ <ul>
+   <li>{{$message}}</li>
+</ul>
+</div>
  @endif
 <div class="row">
 	<div class="col-lg-6">
 		<div class="card">
 			<div class="card-body">
-
-				<!-- <h2 class="header-title">Danh Sách Câu Hỏi</h2>
-				<table id="basic-datatable" class="table dt-responsive nowrap">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Câu hỏi</th>
-							<th>Lĩnh Vực</th>
-							<th>PA A</th>
-							<th>PA B</th>
-							<th>PA C</th>
-							<th>PA D</th>
-							<th>Đáp án</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						@foreach ($dsCauHoi as $ch)						
-						<tr>
-							<td>{{$ch->id}}</td>
-							<td>{{$ch->noi_dung}}</td>
-							<td>{{$ch->linh_vuc_id}}</td>
-							<td>{{$ch->phuong_an_a}}</td>
-							<td>{{$ch->phuong_an_b}}</td>
-							<td>{{$ch->phuong_an_c}}</td>
-							<td>{{$ch->phuong_an_d}}</td>
-							<td>{{$ch->dap_an}}</td>
-							<td>
-								<button type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline"></i></button> 
-								<button type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></button>
-							</td>
-
-						</tr>
-						@endforeach
-					</tbody>
-				</table> -->
 					<div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 						<h2 class="header-title">Danh Sách Câu Hỏi</h2>
 					<div class="row">
@@ -102,15 +71,34 @@
 </div>
 </div>
 <div class="col-lg-6">
+@if( $errors->any() )
+<div class="alert alert-danger alert-dismissable fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+    <ul>
+        @foreach( $errors->all() as $error )
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="mb-3 header-title">Cập nhật câu hỏi</h4>
-                                <form action="{{ route('cauhoi.capnhat',isset($dsCauHoi2->id) ? $dsCauHoi2->id : '')}}" method="POST">
+                                <h4 class="mb-3 header-title">
+                                {{ isset($dsCauHoi2) ? 'Cập nhật câu hỏi' : 'Thêm mới câu hỏi' }}
+                            	</h4>
+                                <form action="{{ 
+                                isset($dsCauHoi2) ? route('cauhoi.capnhat',$dsCauHoi2->id)
+                                : route('cauhoi.themmoipost')
+                                }}" method="POST">
                                 	@csrf
+                                	@if ( isset($dsCauHoi2) )
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">ID</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" value="{{ isset($dsCauHoi2->id) ? $dsCauHoi2->id : ''}}" aria-describedby="emailHelp"disabled="true">
                                     </div>
+                                    @endif
                                      <div class="form-group">
                                         
                                          <label for="linh_vuc_id">Lĩnh vực</label>
@@ -137,17 +125,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Đáp án B</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tên lĩnh vực"
+                                        <input type="text" class="form-control" id="exampleInputPassword1" 
                                         value="{{ isset($dsCauHoi2->id) ? $dsCauHoi2->phuong_an_b : ''}}" name="phuong_an_b" >
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Đáp án C</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tên lĩnh vực"
+                                        <input type="text" class="form-control" id="exampleInputPassword1"
                                         value="{{ isset($dsCauHoi2->id) ? $dsCauHoi2->phuong_an_c : ''}}" name="phuong_an_c" >
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Đáp án D</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tên lĩnh vực"
+                                        <input type="text" class="form-control" id="exampleInputPassword1" 
                                         value="{{ isset($dsCauHoi2->id) ? $dsCauHoi2->phuong_an_d : ''}}" name="phuong_an_d" >
                                     </div>
                                     <div class="form-group">
@@ -159,7 +147,9 @@
 										  <option value="D" selected>D</option>
 										</select>
 									</div>
-                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+									{{ isset($dsCauHoi2) ? 'Cập nhật' : 'Thêm mới' }}
+                                    </button>
                                 </form>
 
                             </div> <!-- end card-body-->

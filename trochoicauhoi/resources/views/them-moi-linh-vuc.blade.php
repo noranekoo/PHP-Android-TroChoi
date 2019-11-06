@@ -9,6 +9,18 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
+                 @if( $errors->any() )
+                <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <ul>
+                        @foreach( $errors->all() as $error )
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
 	 <form action="{{ route('linhvuc.themmoipost') }}" method="POST">
     	@csrf
         <div class="form-group">

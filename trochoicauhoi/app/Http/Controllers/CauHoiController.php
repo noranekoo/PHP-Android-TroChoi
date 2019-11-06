@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\CauHoi;
+use App\Http\Requests\CauHoiRequest;
 class CauHoiController extends Controller
 {
     /**
@@ -33,7 +33,7 @@ class CauHoiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CauHoiRequest $request)
     {
         $cauhoi = new CauHoi;
         $cauhoi->linh_vuc_id = $request->input('linh_vuc_id');
@@ -44,7 +44,7 @@ class CauHoiController extends Controller
         $cauhoi->phuong_an_d = $request->input('phuong_an_d');
         $cauhoi->dap_an = $request->input('dap_an');
         $cauhoi->save();
-        return redirect()->route('cauhoi.themmoi')->with('success','Thêm thành công!!');
+        return redirect()->route('cauhoi')->with('success','Thêm thành công!!');
     }
 
     /**
@@ -78,7 +78,7 @@ class CauHoiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CauHoiRequest $request, $id)
     {
         $cauhoi = CauHoi::find($id);
         $cauhoi->linh_vuc_id = $request->input('linh_vuc_id');

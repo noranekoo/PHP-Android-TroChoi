@@ -7,11 +7,15 @@
 @endsection
 @section('main-content')
  @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    	<span aria-hidden="true">x</span>
+    </button>
+     <ul>
+       <li>{{$message}}</li>
+    </ul>
+</div>
  @endif
-
 <div class="row">
 	<div class="col-lg-6">
 		 <div class="card">
@@ -47,21 +51,41 @@
 		</div> <!-- end card -->
 	</div><!-- end col-->
 			<div class="col-lg-6">
+				@if( $errors->any() )
+                <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <ul>
+                        @foreach( $errors->all() as $error )
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="mb-3 header-title">Cập nhật lĩnh vực</h4>
-                                <form action="{{ route('linhvuc.capnhat',isset($dsLinhvuc2->id) ? $dsLinhvuc2->id : '1')}}" method="POST">
+                                <h4 class="mb-3 header-title">
+                                	{{ isset($dsLinhvuc2) ? 'Cập nhật lĩnh vực' : 'Thêm mới lĩnh vực'  }} 
+                                	
+                            	</h4>
+                                <form action="{{
+                                 isset($dsLinhvuc2) ? route('linhvuc.capnhat',$dsLinhvuc2->id) : 
+                             	 route('linhvuc.themmoipost') }}" 
+                                 method="POST">
                                 	@csrf
+                                	@if(isset($dsLinhvuc2))
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">ID</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" value="{{ isset($dsLinhvuc2->id) ? $dsLinhvuc2->id : ''}}" aria-describedby="emailHelp"disabled="true">
                                     </div>
+                                    @endif
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Tên lĩnh vực</label>
                                         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tên lĩnh vực"
                                         value="{{ isset($dsLinhvuc2->id) ? $dsLinhvuc2->ten_linh_vuc : ''}}" name="ten_linh_vuc" >
                                     </div>
-                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light">{{ isset($dsLinhvuc2) ? 'Cập nhật lĩnh vực' : 'Thêm mới'  }}</button>
                                 </form>
 
                             </div> <!-- end card-body-->

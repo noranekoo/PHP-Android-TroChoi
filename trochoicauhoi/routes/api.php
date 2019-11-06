@@ -20,4 +20,4 @@ Route::get('linh-vuc','API\LinhVucController@index');
 Route::get('cau-hoi/{id}','API\CauHoiController@show');
 Route::get('nguoi-choi/{id}','API\NguoiChoiController@layNguoiChoi');	
 Route::get('diem-cao/','API\NguoiChoiController@top10');	
-
+Route::post('dang-nhap','API\NguoiChoiController@DangNhap');

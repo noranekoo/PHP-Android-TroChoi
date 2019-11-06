@@ -9,9 +9,14 @@
 @endsection
 @section('main-content')
  @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">x</span>
+    </button>
+     <ul>
+       <li>{{$message}}</li>
+    </ul>
+</div>
  @endif
 <div class="row">
 	<div class="col-lg-6">
@@ -52,15 +57,31 @@
 		</div> <!-- end card -->
 	</div><!-- end col-->
 			  <div class="col-lg-6">
+                @if( $errors->any() )
+                <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <ul>
+                        @foreach( $errors->all() as $error )
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="mb-3 header-title">Cập nhật gói Credit</h4>
-                                <form action="{{ route('goicredit.capnhat',isset($dsGoiCredit2->id) ? $dsGoiCredit2->id : '1')}}" method="POST">
+                                <h4 class="mb-3 header-title">
+                                {{ isset($dsGoiCredit2) ? 'Cập nhật gói Credit' : 'Thêm mới gói Credit' }}</h4>
+                                <form action="{{ isset($dsGoiCredit2) ? route('goicredit.capnhat',$dsGoiCredit2->id) :
+                                route('goicredit.themmoipost') }}" method="POST">
                                 	@csrf
+                                    @if ( isset($dsGoiCredit2) )
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">ID</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" value="{{ isset($dsGoiCredit2->id) ? $dsGoiCredit2->id : ''}}" aria-describedby="emailHelp"disabled="true">
                                     </div>
+                                    @endif
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Tên gói Credit</label>
                                         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tên gói credit"
@@ -76,7 +97,7 @@
                                         <input type="text" class="form-control" id="exampleInputPassword1" 
                                         value="{{ isset($dsGoiCredit2->id) ? $dsGoiCredit2->so_tien : ''}}" name="so_tien" >
                                     </div>
-                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light"> {{ isset($dsGoiCredit2) ? 'Cập nhật' : 'Thêm mới' }}</h4></button>
                                 </form>
 
                             </div> <!-- end card-body-->

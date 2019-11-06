@@ -239,9 +239,6 @@
                                     <li>
                                         <a href="/linh-vuc">Danh sách lĩnh vực</a>
                                     </li>
-                                    <li>
-                                        <a href="/linh-vuc/them-moi">Thêm mới</a>
-                                    </li>
                                      <li>
                                         <a href="/linh-vuc/thung-rac">Thùng rác</a>
                                     </li>
@@ -253,9 +250,6 @@
                                 <ul class="submenu">
                                     <li>
                                         <a href="/cau-hoi">Danh sách câu hỏi</a>
-                                    </li>
-                                    <li>
-                                        <a href="/cau-hoi/them-moi">Thêm mới</a>
                                     </li>
                                     <li>
                                         <a href="/cau-hoi/thung-rac">Thùng rác</a>
@@ -279,9 +273,6 @@
                                 <ul class="submenu">
                                     <li>
                                         <a href="/goi-credit">Danh sách gói Credit</a>
-                                    </li>
-                                    <li>
-                                        <a href="/goi-credit/them-moi">Thêm mới</a>
                                     </li>
                                     <li>
                                         <a href="/goi-credit/thung-rac">Thùng rác</a>

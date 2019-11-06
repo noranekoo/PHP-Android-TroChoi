@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function(){
 		Route::get('/{id}','LinhVucController@show')->name('linhvuc.get');
 		Route::get('xoa/{id}','LinhVucController@Delete');
 		Route::post('/{id}','LinhVucController@update')->name('linhvuc.capnhat');
-		Route::post('','LinhVucController@store')->name('linhvuc.themmoipost');
+		Route::post('/','LinhVucController@store')->name('linhvuc.themmoipost');
 	});
 	Route::prefix('nguoi-choi')->group(function(){
 		Route::prefix('thung-rac')->group(function(){

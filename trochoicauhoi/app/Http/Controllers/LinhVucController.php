@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers;
 use App\LinhVuc;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Requests\LinhVucRequest;
+
 class LinhVucController extends Controller
 {
     /**
@@ -33,7 +37,7 @@ class LinhVucController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LinhVucRequest $request)
     {
         $linhvuc = new LinhVuc;
         $linhvuc->ten_linh_vuc = $request->input('ten_linh_vuc');
@@ -51,9 +55,9 @@ class LinhVucController extends Controller
     {
         $dsLinhvuc = LinhVuc::all();
         $dsLinhvuc2 = LinhVuc::find($id);
-        $user = Auth::user();
+        //$user = Auth::user();
        
-        return view('ds-linh-vuc',compact('dsLinhvuc','dsLinhvuc2','name'));
+        return view('ds-linh-vuc',compact('dsLinhvuc','dsLinhvuc2'));
     }
 
     /**
@@ -73,7 +77,7 @@ class LinhVucController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LinhVucRequest $request, $id)
     {
         $linhvuc = LinhVuc::find($id);
         $linhvuc->ten_linh_vuc = $request->input('ten_linh_vuc');

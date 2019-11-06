@@ -47,6 +47,16 @@
                                     </ul>
                                 </div>
                                 @endif
+                                  @if( $message = Session::get('fail'))
+                                <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">x</span>
+                                    </button>
+                                    <ul>
+                                        <li>{{ $message }}</li>
+                                    </ul>
+                                </div>
+                                @endif
                                 <form action="{{ route('dangnhap.xuly') }}" method="POST" >
                                     @csrf
                                     <div class="form-group mb-3">
