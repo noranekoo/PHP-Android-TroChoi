@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\NguoiChoiRequest;
 use Illuminate\Http\Request;
 use App\NguoiChoi;
+use RealRashid\SweetAlert\Facades\Alert;
+
 class NguoiChoiController extends Controller
 {
     /**
@@ -33,7 +35,7 @@ class NguoiChoiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NguoiChoiRequest $request)
     {
         $nguoichoi = new NguoiChoi;
         $nguoichoi->ten_dang_nhap = $request->input('ten_dang_nhap');
@@ -46,7 +48,8 @@ class NguoiChoiController extends Controller
         $nguoichoi->credit = '0';
         $nguoichoi->diem_cao_nhat = '0';
         $nguoichoi->save();
-        return redirect()->route('nguoichoi')->with('success','Thêm thành công!!');
+        alert()->success('', 'Thêm thành công !!');
+        return redirect()->route('nguoichoi');
     }
 
     /**
@@ -97,18 +100,21 @@ class NguoiChoiController extends Controller
     {
         $nguoichoi = NguoiChoi::find($id);
         $nguoichoi->delete();
-        return redirect()->route('nguoichoi')->with('success','Xóa thành công!!');
+        alert()->success('', 'Xóa thành công!!');
+        return redirect()->route('nguoichoi');
     }
     public function forceDelete($id)
     {
         $nguoichoi = NguoiChoi::onlyTrashed()->get()->find($id);
         $nguoichoi->forceDelete();
-        return redirect()->route('nguoichoi.thungrac')->with('success','Xóa thành công!!');
+        alert()->success('', 'Xóa thành công!!');
+        return redirect()->route('nguoichoi.thungrac');
     }
      public function restore($id)
     {
         $nguoichoi = NguoiChoi::onlyTrashed()->get()->find($id);
         $nguoichoi->restore();
+        alert()->success('', 'Phục hồi thành công!!');
         return redirect()->route('nguoichoi.thungrac')->with('success','Khôi phục thành công!!');
     }
     public function onlyTrashed()

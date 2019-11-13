@@ -8,16 +8,7 @@
 <link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css')}}" />
 @endsection
 @section('main-content')
- @if ($message = Session::get('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">x</span>
-    </button>
-     <ul>
-       <li>{{$message}}</li>
-    </ul>
-</div>
- @endif
+@include('sweetalert::alert')
 <div class="row">
 	<div class="col-lg-6">
 		 <div class="card">

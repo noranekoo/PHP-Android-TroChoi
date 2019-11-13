@@ -6,11 +6,7 @@
 <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css')}}" rel="stylesheet" type="text/css">
 @endsection
 @section('main-content')
- @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
- @endif
+@include('sweetalert::alert')
 <div class="row">
 	<div class="col-lg-7">
 		<div class="card">
@@ -61,7 +57,19 @@
 </div>
 </div>
 <div class="col-lg-5">
-                        <div class="card">
+	@if( $errors->any() )
+                <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <ul>
+                        @foreach( $errors->all() as $error )
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                       <div class="card">
                             <div class="card-body"><h4>Thêm người chơi</h4>
                                  <form action="{{ route('nguoichoi.themmoipost') }}" method="POST">
 							    	@csrf

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GoiCreditRequest;
 use App\GoiCredit;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Http\Request;
+
 class GoiCreditController extends Controller
 {
     /**
@@ -40,7 +43,8 @@ class GoiCreditController extends Controller
         $goicredit->credit = $request->input('credit');
         $goicredit->so_tien = $request->input('so_tien');
         $goicredit->save();
-        return redirect()->route('goicredit')->with('success','Thêm thành công!!');
+        alert()->success('','Thêm thành công !!');
+        return redirect()->route('goicredit');
     }
 
     /**
@@ -74,14 +78,15 @@ class GoiCreditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(GoiCreditRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $goicredit = goicredit::find($id);
         $goicredit->ten_goi_credit = $request->input('ten_goi_credit');
         $goicredit->credit = $request->input('credit');
         $goicredit->so_tien = $request->input('so_tien');
         $goicredit->save();
-        return redirect()->route('goicredit')->with('success','Cập nhật thành công!!');
+        alert()->success('','Cập nhật thành công !!');
+        return redirect()->route('goicredit');
     }
 
     /**
@@ -98,19 +103,22 @@ class GoiCreditController extends Controller
     {
         $goicredit = GoiCredit::find($id);
         $goicredit->delete();
-        return redirect()->route('goicredit')->with('success','Xóa thành công!!');
+        alert()->success('','Xóa thành công !!');
+        return redirect()->route('goicredit');
     }
     public function forceDelete($id)
     {
         $goicredit = GoiCredit::onlyTrashed()->get()->find($id);
         $goicredit->forceDelete();
-        return redirect()->route('goicredit.thungrac')->with('success','Xóa thành công!!');
+        alert()->success('','Xóa thành công !!');
+        return redirect()->route('goicredit.thungrac');
     }
      public function restore($id)
     {
         $goicredit = GoiCredit::onlyTrashed()->get()->find($id);
         $goicredit->restore();
-        return redirect()->route('goicredit.thungrac')->with('success','Khôi phục thành công!!');
+        alert()->success('','Phục hồi thành công !!');
+        return redirect()->route('goicredit.thungrac');
     }
     public function onlyTrashed()
     {

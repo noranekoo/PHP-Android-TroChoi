@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\CauHoi;
 use App\Http\Requests\CauHoiRequest;
+use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 class CauHoiController extends Controller
 {
     /**
@@ -44,7 +47,8 @@ class CauHoiController extends Controller
         $cauhoi->phuong_an_d = $request->input('phuong_an_d');
         $cauhoi->dap_an = $request->input('dap_an');
         $cauhoi->save();
-        return redirect()->route('cauhoi')->with('success','Thêm thành công!!');
+        alert()->success('', 'Thêm câu hỏi thành công !!');
+        return redirect()->route('cauhoi');
     }
 
     /**
@@ -78,10 +82,10 @@ class CauHoiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CauHoiRequest $request, $id)
+    public function update(Request $request, $id)
     {
+
         $cauhoi = CauHoi::find($id);
-        $cauhoi->linh_vuc_id = $request->input('linh_vuc_id');
         $cauhoi->noi_dung = $request->input('noi_dung');
         $cauhoi->phuong_an_a = $request->input('phuong_an_a');
         $cauhoi->phuong_an_b = $request->input('phuong_an_b');
@@ -89,7 +93,9 @@ class CauHoiController extends Controller
         $cauhoi->phuong_an_d = $request->input('phuong_an_d');
         $cauhoi->dap_an = $request->input('dap_an');
         $cauhoi->save();
-        return redirect()->route('cauhoi')->with('success','Cập nhật thành công!!');    }
+        alert()->success('', 'Cập nhật câu hỏi thành công !!');
+        return redirect()->route('cauhoi'); 
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -111,13 +117,15 @@ class CauHoiController extends Controller
     {
         $cauhoi = CauHoi::onlyTrashed()->get()->find($id);
         $cauhoi->forceDelete();
-        return redirect()->route('cauhoi.thungrac')->with('success','Xóa thành công!!');
+        alert()->success('', 'Xóa thành công !!');
+        return redirect()->route('cauhoi.thungrac');
     }
      public function restore($id)
     {
         $cauhoi = CauHoi::onlyTrashed()->get()->find($id);
         $cauhoi->restore();
-        return redirect()->route('cauhoi.thungrac')->with('success','Khôi phục thành công!!');
+        alert()->success('', 'Phục hồi thành công !!');
+        return redirect()->route('cauhoi.thungrac');
     }
     public function onlyTrashed()
     {

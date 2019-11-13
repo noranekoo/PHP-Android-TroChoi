@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers;
 use App\LinhVuc;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Http\Requests\LinhVucRequest;
 
@@ -39,10 +40,13 @@ class LinhVucController extends Controller
      */
     public function store(LinhVucRequest $request)
     {
+        //Alert::alert('Title', 'Message', 'Type');
+
         $linhvuc = new LinhVuc;
         $linhvuc->ten_linh_vuc = $request->input('ten_linh_vuc');
-        $linhvuc->save();
-        return redirect()->route('linhvuc')->with('success','Thêm thành công!!');
+        $linhvuc->save();    
+        alert()->success('Thêm lĩnh vực thành công !!', '');
+        return redirect()->route('linhvuc');
     }
 
     /**
@@ -56,7 +60,7 @@ class LinhVucController extends Controller
         $dsLinhvuc = LinhVuc::all();
         $dsLinhvuc2 = LinhVuc::find($id);
         //$user = Auth::user();
-       
+       //Alert::success('Success Title', 'Success Message');
         return view('ds-linh-vuc',compact('dsLinhvuc','dsLinhvuc2'));
     }
 
@@ -82,7 +86,8 @@ class LinhVucController extends Controller
         $linhvuc = LinhVuc::find($id);
         $linhvuc->ten_linh_vuc = $request->input('ten_linh_vuc');
         $linhvuc->save();
-        return redirect()->route('linhvuc')->with('success','Cập nhật thành công!!');
+        alert()->success('','Cập nhật lĩnh vực thành công !!'); 
+        return redirect()->route('linhvuc');
     }
 
     /**
@@ -99,19 +104,22 @@ class LinhVucController extends Controller
     {
         $linhvuc = LinhVuc::find($id);
         $linhvuc->delete();
-        return redirect()->route('linhvuc')->with('success','Xóa thành công!!');
+        alert()->success('','Xóa lĩnh vực thành công !!');
+        return redirect()->route('linhvuc');
     }
     public function forceDelete($id)
     {
         $linhvuc = LinhVuc::onlyTrashed()->get()->find($id);
         $linhvuc->forceDelete();
-        return redirect()->route('linhvuc.thungrac')->with('success','Xóa thành công!!');
+        alert()->success('','Xóa thành công !!');
+        return redirect()->route('linhvuc.thungrac');
     }
      public function restore($id)
     {
         $linhvuc = LinhVuc::onlyTrashed()->get()->find($id);
         $linhvuc->restore();
-        return redirect()->route('linhvuc.thungrac')->with('success','Khôi phục thành công!!');
+        alert()->success('','Khôi phục thành công !!');
+        return redirect()->route('linhvuc.thungrac');
     }
     public function onlyTrashed()
     {

@@ -10,6 +10,8 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
         @yield('css')
+        @include('sweetalert::alert')
+
         <!-- App css -->
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -450,6 +452,8 @@
         @yield('js')
         <!-- App js-->
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
+        <!--Sweet Alert -->
+        <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
         
     </body>
 </html>

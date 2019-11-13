@@ -21,3 +21,4 @@ Route::get('cau-hoi/{id}','API\CauHoiController@show');
 Route::get('nguoi-choi/{id}','API\NguoiChoiController@layNguoiChoi');	
 Route::get('diem-cao/','API\NguoiChoiController@top10');	
 Route::post('dang-nhap','API\NguoiChoiController@DangNhap');
+Route::get('nguoi-choi','API\NguoiChoiController@layDSNguoiChoi');

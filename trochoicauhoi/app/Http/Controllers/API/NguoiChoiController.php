@@ -84,6 +84,16 @@ class NguoiChoiController extends Controller
     {
         //
     }
+    public function layDSNguoiChoi(Request $request)
+    {
+        $page = $request->query('page',1);
+        $limit = $request->query('limit',25);
+        $listNguoiChoi = NguoiChoi::orderBy('diem_cao_nhat','desc')->skip(($page-1)*$limit)->take($limit)->get();
+        return response()->json([
+            'total'=>NguoiChoi::count(),
+            'data'=>$listNguoiChoi
+        ]);
+    }
     public function layNguoiChoi($id)
     {
         $nguoiChoi = NguoiChoi::find($id);

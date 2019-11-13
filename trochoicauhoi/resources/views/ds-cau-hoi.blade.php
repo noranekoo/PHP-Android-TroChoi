@@ -6,19 +6,11 @@
 <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css')}}" rel="stylesheet" type="text/css">
 @endsection
 @section('main-content')
- @if ($message = Session::get('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">x</span>
-</button>
- <ul>
-   <li>{{$message}}</li>
-</ul>
-</div>
- @endif
 <div class="row">
 	<div class="col-lg-6">
 		<div class="card">
+            @include('sweetalert::alert')
+
 			<div class="card-body">
 					<div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 						<h2 class="header-title">Danh Sách Câu Hỏi</h2>

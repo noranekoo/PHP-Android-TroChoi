@@ -6,20 +6,10 @@
 <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css')}}" rel="stylesheet" type="text/css">
 @endsection
 @section('main-content')
- @if ($message = Session::get('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    	<span aria-hidden="true">x</span>
-    </button>
-     <ul>
-       <li>{{$message}}</li>
-    </ul>
-</div>
- @endif
 <div class="row">
 	<div class="col-lg-6">
 		 <div class="card">
-
+@include('sweetalert::alert')
 			<div class="card-body">
 				 
 				<table table id="basic-datatable" class="table dt-responsive nowrap">
@@ -38,7 +28,8 @@
 							<td>{{$lv->ten_linh_vuc}}</td>
 							<td>
 								<a href="{{ url('/linh-vuc/'.$lv->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline"></i></a> 
-								<a href="{{ url('/linh-vuc/xoa/'.$lv->id) }}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></a>
+								<a type="submit" href="{{ url('/linh-vuc/xoa/'.$lv->id) }}" class="btn btn-danger waves-effect waves-light" id="sweet-5"><i class="mdi mdi-close"></i></a>
+                                   <!--  <button type="submit" class="btn btn-danger sweet-5" id="sweet-5" ><a href="{{ url('/linh-vuc/xoa/'.$lv->id) }}">x</a></button> -->
 							</td>
 
 						</tr>
@@ -100,4 +91,26 @@
 <script src="{{ asset('assets/libs/datatables/dataTables.bootstrap4.js')}}"></script>
 <script src="{{ asset('assets/libs/datatables/dataTables.responsive.min.js')}}"></script>
 <script src="{{ asset('assets/js/pages/datatables.init.js')}}"></script>
+<script>
+document.getElementById('sweet-5').onclick = function(e){
+    e.preventDefault();
+    var th = $(this);
+    Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if ( result.value ) {
+    th.parent().submit();
+  }
+  else {
+      swal("Cancelled", "This account not be create :)", "error");
+    }
+})
+};
+</script>
 @endsection
