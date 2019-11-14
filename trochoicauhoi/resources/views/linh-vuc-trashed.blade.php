@@ -1,4 +1,7 @@
 @extends('layout')
+@section('css')
+	@include('extends/SA-header')
+@endsection
 @section('main-content')
 Thùng rác lĩnh vực
 <div class="row">
@@ -21,8 +24,10 @@ Thùng rác lĩnh vực
 							<td>{{$lv->id}}</td>
 							<td>{{$lv->ten_linh_vuc}}</td>
 							<td>
-								<a href="{{ url('/linh-vuc/thung-rac/khoi-phuc/'.$lv->id) }}" class="btn btn-success waves-effect waves-light "><i class="fe-heart"></i></a> 
-								<a href="{{ url('/linh-vuc/thung-rac/xoa/'.$lv->id) }}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></a>
+								<form action="{{ url('/linh-vuc/thung-rac/xoa/'.$lv->id) }}" method="GET">
+									<a href="{{ url('/linh-vuc/thung-rac/khoi-phuc/'.$lv->id) }}" class="btn btn-success waves-effect waves-light "><i class="fe-heart"></i></a> 
+									<button class="btn btn-danger waves-effect waves-light" id="sa-warning"><i class="mdi mdi-close"></i></button>
+							</form>
 							</td>
 
 						</tr>
@@ -35,4 +40,6 @@ Thùng rác lĩnh vực
 	</div><!-- end col-->
 </div>
 @endsection
-
+@section('js')
+	@include('extends/SA-footer')
+@endsection

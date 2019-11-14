@@ -23,8 +23,10 @@ Thùng rác lĩnh vực
 							<td>{{$gc->credit}}</td>
 							<td>{{$gc->so_tien}}</td>
 							<td>
-								<a href="{{ url('/goi-credit/thung-rac/khoi-phuc/'.$gc->id) }}" class="btn btn-success waves-effect waves-light "><i class="fe-heart"></i></a> 
-								<a href="{{ url('/goi-credit/thung-rac/xoa/'.$gc->id) }}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></a>
+								<form action="{{ url('/goi-credit/thung-rac/xoa/'.$gc->id) }}" method="GET">
+									<a href="{{ url('/goi-credit/thung-rac/khoi-phuc/'.$gc->id) }}" class="btn btn-success waves-effect waves-light "><i class="fe-heart"></i></a> 
+									<button class="btn btn-danger waves-effect waves-light" id="sa-warning"><i class="mdi mdi-close"></i></button>
+								</form>
 							</td>
 
 						</tr>
@@ -36,5 +38,8 @@ Thùng rác lĩnh vực
 		</div> <!-- end card -->
 	</div><!-- end col-->
 </div>
+@endsection
+@section('js')
+	@include('extends/SA-footer')
 @endsection
 

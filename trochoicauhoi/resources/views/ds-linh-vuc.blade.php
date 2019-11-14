@@ -1,9 +1,7 @@
 @extends('layout')
 @section('css')
-<link href="{{ asset('assets/libs/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet" type="text/css">
-<link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.css')}}" rel="stylesheet" type="text/css">
-<link href="{{ asset('assets/libs/datatables/select.bootstrap4.css')}}" rel="stylesheet" type="text/css">
-<link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.css')}}" rel="stylesheet" type="text/css">
+  @include('extends/table-header')
+  @include('extends/SA-header')
 @endsection
 @section('main-content')
 <div class="row">
@@ -26,11 +24,14 @@
 						<tr>
 							<td>{{$lv->id}}</td>
 							<td>{{$lv->ten_linh_vuc}}</td>
-							<td>
-								<a href="{{ url('/linh-vuc/'.$lv->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline"></i></a> 
-								<a type="submit" href="{{ url('/linh-vuc/xoa/'.$lv->id) }}" class="btn btn-danger waves-effect waves-light" id="sweet-5"><i class="mdi mdi-close"></i></a>
-                                   <!--  <button type="submit" class="btn btn-danger sweet-5" id="sweet-5" ><a href="{{ url('/linh-vuc/xoa/'.$lv->id) }}">x</a></button> -->
-							</td>
+              <td>
+              </td>
+              <td>
+                    <form action="{{ url('/linh-vuc/xoa/'.$lv->id) }}" method="GET">
+                      <a href="{{ url('/linh-vuc/'.$lv->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline"></i></a>
+  							     <button class="btn btn-danger waves-effect waves-light" id="sa-warning"><i class="mdi mdi-close"></i></button>
+                    </form>
+              </td>
 
 						</tr>
 						@endforeach
@@ -54,63 +55,38 @@
                     </ul>
                 </div>
                 @endif
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="mb-3 header-title">
-                                	{{ isset($dsLinhvuc2) ? 'Cập nhật lĩnh vực' : 'Thêm mới lĩnh vực'  }} 
-                                	
-                            	</h4>
-                                <form action="{{
-                                 isset($dsLinhvuc2) ? route('linhvuc.capnhat',$dsLinhvuc2->id) : 
-                             	 route('linhvuc.themmoipost') }}" 
-                                 method="POST">
-                                	@csrf
-                                	@if(isset($dsLinhvuc2))
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">ID</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{ isset($dsLinhvuc2->id) ? $dsLinhvuc2->id : ''}}" aria-describedby="emailHelp"disabled="true">
-                                    </div>
-                                    @endif
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Tên lĩnh vực</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tên lĩnh vực"
-                                        value="{{ isset($dsLinhvuc2->id) ? $dsLinhvuc2->ten_linh_vuc : ''}}" name="ten_linh_vuc" >
-                                    </div>
-                                    <button type="submit" class="btn btn-primary waves-effect waves-light">{{ isset($dsLinhvuc2) ? 'Cập nhật lĩnh vực' : 'Thêm mới'  }}</button>
-                                </form>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="mb-3 header-title">
+            	{{ isset($dsLinhvuc2) ? 'Cập nhật lĩnh vực' : 'Thêm mới lĩnh vực'  }} 
+            	
+        	</h4>
+            <form action="{{
+             isset($dsLinhvuc2) ? route('linhvuc.capnhat',$dsLinhvuc2->id) : 
+         	 route('linhvuc.themmoipost') }}" 
+             method="POST">
+            	@csrf
+            	@if(isset($dsLinhvuc2))
+                <div class="form-group">
+                    <label for="exampleInputEmail1">ID</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" value="{{ isset($dsLinhvuc2->id) ? $dsLinhvuc2->id : ''}}" aria-describedby="emailHelp"disabled="true">
+                </div>
+                @endif
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Tên lĩnh vực</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tên lĩnh vực"
+                    value="{{ isset($dsLinhvuc2->id) ? $dsLinhvuc2->ten_linh_vuc : ''}}" name="ten_linh_vuc" >
+                </div>
+                <button type="submit" class="btn btn-primary waves-effect waves-light">{{ isset($dsLinhvuc2) ? 'Cập nhật lĩnh vực' : 'Thêm mới'  }}</button>
+            </form>
 
-                            </div> <!-- end card-body-->
-                        </div> <!-- end card-->
-                    </div>
+        </div> <!-- end card-body-->
+    </div> <!-- end card-->
+</div>
 </div>
 </div>
 @endsection
-
 @section('js')
-<script src="{{ asset('assets/libs/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/dataTables.bootstrap4.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/dataTables.responsive.min.js')}}"></script>
-<script src="{{ asset('assets/js/pages/datatables.init.js')}}"></script>
-<script>
-document.getElementById('sweet-5').onclick = function(e){
-    e.preventDefault();
-    var th = $(this);
-    Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
-}).then((result) => {
-  if ( result.value ) {
-    th.parent().submit();
-  }
-  else {
-      swal("Cancelled", "This account not be create :)", "error");
-    }
-})
-};
-</script>
+  @include('extends/table-footer')
+  @include('extends/SA-footer')
 @endsection

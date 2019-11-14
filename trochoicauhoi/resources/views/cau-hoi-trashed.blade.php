@@ -1,4 +1,7 @@
 @extends('layout')
+@section('css')
+	@include('../extends/SA-header')
+@endsection
 @section('main-content')
 Thùng rác câu hỏi
 <div class="row">
@@ -24,8 +27,10 @@ Thùng rác câu hỏi
 <!-- 							<td>{{App\LinhVuc::find($ch->linh_vuc_id)->ten_linh_vuc}}</td>
  -->
 							<td>
-								<a href="{{ url('/cau-hoi/thung-rac/khoi-phuc/'.$ch->id) }}" class="btn btn-success waves-effect waves-light "><i class="fe-heart"></i></a> 
-								<a href="{{ url('/cau-hoi/thung-rac/xoa/'.$ch->id) }}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></a>
+								<form action="{{ url('/cau-hoi/thung-rac/xoa/'.$ch->id) }}"	method="GET">
+									<a href="{{ url('/cau-hoi/thung-rac/khoi-phuc/'.$ch->id) }}" class="btn btn-success waves-effect waves-light "><i class="fe-heart"></i></a> 
+									<button class="btn btn-danger waves-effect waves-light" id="sa-warning" ><i class="mdi mdi-close"></i></button>
+								</form>
 							</td>
 
 						</tr>
@@ -38,4 +43,6 @@ Thùng rác câu hỏi
 	</div><!-- end col-->
 </div>
 @endsection
-
+@section('js')
+	@include('extends/SA-footer')
+@endsection

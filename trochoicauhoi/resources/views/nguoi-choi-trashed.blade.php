@@ -1,4 +1,7 @@
 @extends('layout')
+@section('css')
+	@include('../extends/SA-header')
+@endsection
 @section('main-content')
 @include('sweetalert::alert')
 Thùng rác lĩnh vực
@@ -22,8 +25,10 @@ Thùng rác lĩnh vực
 							<td>{{$nc->ten_dang_nhap}}</td>
 							<td>{{$nc->email}}</td>
 							<td>
-								<a href="{{ url('/nguoi-choi/thung-rac/khoi-phuc/'.$nc->id) }}" class="btn btn-success waves-effect waves-light "><i class="fe-heart"></i></a> 
-								<a href="{{ url('/nguoi-choi/thung-rac/xoa/'.$nc->id) }}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></a>
+								<form action="{{ url('/nguoi-choi/thung-rac/xoa/'.$nc->id) }}" method="GET" >
+									<a href="{{ url('/nguoi-choi/thung-rac/khoi-phuc/'.$nc->id) }}" class="btn btn-success waves-effect waves-light "><i class="fe-heart"></i></a> 
+									<button class="btn btn-danger waves-effect waves-light" id="sa-warning"><i class="mdi mdi-close"></i></button>
+								</form>
 							</td>
 
 						</tr>
@@ -36,4 +41,6 @@ Thùng rác lĩnh vực
 	</div><!-- end col-->
 </div>
 @endsection
-
+@section('js')
+	@include('extends/SA-footer')
+@endsection
