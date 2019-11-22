@@ -28,7 +28,6 @@ class NguoiChoiController extends Controller
         $dsNguoiChoi = NguoiChoi::all();
         return view('ds-nguoi-choi',compact('dsNguoiChoi'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -41,17 +40,21 @@ class NguoiChoiController extends Controller
         $nguoichoi->ten_dang_nhap = $request->input('ten_dang_nhap');
         $nguoichoi->mat_khau = $request->input('mat_khau');
         $nguoichoi->email = $request->input('email');
-        if( $nguoichoi->hinh_dai_dien == null)
+        if( !$request->hasFile('hinh_dai_dien'))
             $nguoichoi->hinh_dai_dien = '';
         else
-            $nguoichoi->hinh_dai_dien = $request->input('hinh_dai_dien');
+        {
+            $avatar = $request->hinh_dai_dien;
+            $nguoichoi->hinh_dai_dien = $avatar->getClientOriginalName();
+            $avatar->storeAs('assets/images/users',$avatar->getClientOriginalName());
+        }
         $nguoichoi->credit = '0';
         $nguoichoi->diem_cao_nhat = '0';
         $nguoichoi->save();
         alert()->success('', 'Thêm thành công !!');
         return redirect()->route('nguoichoi');
     }
-
+    
     /**
      * Display the specified resource.
      *

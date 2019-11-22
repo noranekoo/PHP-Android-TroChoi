@@ -15,7 +15,6 @@
 						<div class="col-sm-12 col-md-12">
 							<div class="dataTables_length" id="basic-datatable_length">
 							<table id="basic-datatable" class="table dt-responsive nowrap">
-
                                     <thead>
                                         <tr role="row">
                                         	<th>Câu hỏi</th>
@@ -149,18 +148,7 @@
 
 
 @endsection
-
 @section('js')
-<script src="{{ asset('assets/libs/datatables/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/dataTables.buttons.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/buttons.bootstrap4.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/buttons.html5.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/buttons.flash.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/buttons.print.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/dataTables.keyTable.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/dataTables.select.min.js')}}"></script>
-<script src="{{ asset('assets/libs/pdfmake/pdfmake.min.js')}}"></script>
-<script src="{{ asset('assets/libs/pdfmake/vfs_fonts.js')}}"></script>
 @include('extends/table-footer')
     @include('extends/SA-footer')
 @endsection

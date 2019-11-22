@@ -10,7 +10,8 @@ Thùng rác lĩnh vực
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Tên lĩnh vực</th>
+							<th>Tên gói Credit</th>
+							<th>Số tiền</th>
 							<th></th>
 						</tr>
 					</thead>

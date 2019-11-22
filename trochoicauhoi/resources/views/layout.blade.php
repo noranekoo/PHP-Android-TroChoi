@@ -2,25 +2,21 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Upvex - Responsive Admin Dashboard Template</title>
+        <title>LTD - Admin page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/images/ltd.ico') }}">
         @yield('css')
         @include('sweetalert::alert')
-
         <!-- App css -->
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
-
     </head>
-
     <body>
-
         <!-- Navigation Bar-->
         <header id="topnav">
 
@@ -57,99 +53,8 @@
                         </li>
             
                         <li class="dropdown notification-list">
-                            <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <i class="fe-bell noti-icon"></i>
-                                <span class="badge badge-danger rounded-circle noti-icon-badge">0</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                                <!-- item-->
-                                <div class="dropdown-item noti-title">
-                                    <h5 class="m-0">
-                                        <span class="float-right">
-                                            <a href="" class="text-muted">
-                                                <small>Clear All</small>
-                                            </a>
-                                        </span>Notification
-                                    </h5>
-                                </div>
-
-                                <div class="slimscroll noti-scroll">
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                                        <div class="notify-icon">
-                                            <img src="{{ asset('assets/images/users/user-1.jpg') }}" class="img-fluid rounded-circle" alt="" /> </div>
-                                        <p class="notify-details">Cristina Pride</p>
-                                        <p class="text-muted mb-0 user-msg">
-                                            <small>Hi, How are you? What about our next meeting</small>
-                                        </p>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-primary">
-                                            <i class="mdi mdi-comment-account-outline"></i>
-                                        </div>
-                                        <p class="notify-details">Caleb Flakelar commented on Admin
-                                            <small class="text-muted">1 min ago</small>
-                                        </p>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon">
-                                            <img src="{{ asset('assets/images/users/user-4.jpg') }}" class="img-fluid rounded-circle" alt="" /> </div>
-                                        <p class="notify-details">Karen Robinson</p>
-                                        <p class="text-muted mb-0 user-msg">
-                                            <small>Wow ! this admin looks good and awesome design</small>
-                                        </p>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-warning">
-                                            <i class="mdi mdi-account-plus"></i>
-                                        </div>
-                                        <p class="notify-details">New user registered.
-                                            <small class="text-muted">5 hours ago</small>
-                                        </p>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-info">
-                                            <i class="mdi mdi-comment-account-outline"></i>
-                                        </div>
-                                        <p class="notify-details">Caleb Flakelar commented on Admin
-                                            <small class="text-muted">4 days ago</small>
-                                        </p>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-secondary">
-                                            <i class="mdi mdi-heart"></i>
-                                        </div>
-                                        <p class="notify-details">Carlos Crouch liked
-                                            <b>Admin</b>
-                                            <small class="text-muted">13 days ago</small>
-                                        </p>
-                                    </a>
-                                </div>
-
-                                <!-- All-->
-                                <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                                    View all
-                                    <i class="fi-arrow-right"></i>
-                                </a>
-
-                            </div>
-                        </li>
-
-                        <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
+                                <img src="{{ asset('assets/images/users/').'/'.Auth::user()->anh_dai_dien }} " alt="user-image" class="rounded-circle">
                                 <span class="pro-user-name ml-1">
                                     {{Auth::user()->ho_ten}}
                                     <i class="mdi mdi-chevron-down"></i> 
@@ -157,28 +62,14 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                 <!-- item-->
-                                <div class="dropdown-item noti-title">
-                                    <h5 class="m-0">
-                                        Welcome !
-                                    </h5>
-                                </div>
-
-                                <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="fe-user"></i>
-                                    <span>My Account</span>
+                                    <span>Tài khoản của tôi</span>
                                 </a>
-
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fe-settings"></i>
-                                    <span>Settings</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="{{ route('lock') }}" class="dropdown-item notify-item">
                                     <i class="fe-lock"></i>
-                                    <span>Lock Screen</span>
+                                    <span>Màn hình khóa</span>
                                 </a>
 
                                 <div class="dropdown-divider"></div>
@@ -192,19 +83,13 @@
                             </div>
                         </li>
 
-                        <li class="dropdown notification-list">
-                            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">
-                                <i class="fe-settings noti-icon"></i>
-                            </a>
-                        </li>
-
                     </ul>
 
                     <!-- LOGO -->
                     <div class="logo-box">
                         <a href="index.html" class="logo text-center">
                             <span class="logo-lg">
-                                <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="26">
+                                <img src="{{ asset('assets/images/logo-cerbercus.png') }}" alt="" height="26">
                                 <!-- <span class="logo-lg-text-dark">Upvex</span> -->
                             </span>
                             <span class="logo-sm">
@@ -313,12 +198,12 @@
                         <div class="page-title-box">
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Upvex</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
-                                    <li class="breadcrumb-item active">Starter</li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
+                                    <li class="breadcrumb-item active"></li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Starter</h4>
+                            <h4 class="page-title"></h4>
                         </div>
                     </div>
                 </div>     

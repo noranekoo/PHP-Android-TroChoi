@@ -3,8 +3,7 @@
 	@include('extends/SA-header')
 @endsection
 @section('main-content')
-Thùng rác lĩnh vực
-<div class="row">
+<h3>Thùng rác lĩnh vực</h3>
 	<div class="col-lg-12">
 		@include('sweetalert::alert')
 		<div class="card">

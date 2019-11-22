@@ -12,11 +12,9 @@
 					<div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 						<h2 class="header-title">Danh Sách Người chơi</h2>
 					<div class="row">
-
 						<div class="col-sm-12 col-md-12">
 							<div class="dataTables_length" id="basic-datatable_length">
 							<table id="basic-datatable" class="table dt-responsive nowrap">
-
                             <thead>
                                 <tr role="row">
                                 	<th>ID</th>
@@ -40,7 +38,10 @@
 							<td>{{$nc->credit}}</td>
 							<td>
 								<form action="{{ url('/nguoi-choi/xoa/'.$nc->id) }}" >
+									<a role="button" href="{{ route('ls-choi',$nc->id) }}"class="btn btn-info waves-effect waves-light">Lịch sử chơi</a>
+                                    <a role="button" href="{{ route('ls-mua-credit',$nc->id) }}" class="btn btn-warning waves-effect waves-light">Lịch sử mua Credit </a>
 									<button class="btn btn-danger waves-effect waves-light" id="sa-warning"><i class="mdi mdi-close"></i></button>
+                                    </div>
 								</form>
 							</td>
 						</tr>
@@ -71,7 +72,7 @@
 @endif
        <div class="card">
             <div class="card-body"><h4>Thêm người chơi</h4>
-                 <form action="{{ route('nguoichoi.themmoipost') }}" method="POST">
+                 <form action="{{ route('nguoichoi.themmoipost') }}" method="POST" enctype="multipart/form-data">
 			    	@csrf
 			        <div class="form-group">
 			            <label for="exampleInputPassword1">Tên đăng nhập</label>
@@ -95,8 +96,7 @@
 			        </div>
 			         <div class="form-group">
 			            <label for="exampleInputPassword1">Hình đại diện</label>
-			            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Hình đại diện"
-			            value="" name="hinh_dai_dien" >
+			            <input type="file" class="form-control" id="exampleInputPassword1" value="Chọn ảnh đại diện" name="hinh_dai_dien" >
 			        </div>
 			        <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
 				</form>
@@ -109,17 +109,7 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('assets/libs/datatables/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/dataTables.buttons.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/buttons.bootstrap4.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/buttons.html5.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/buttons.flash.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/buttons.print.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/dataTables.keyTable.min.js')}}"></script>
-<script src="{{ asset('assets/libs/datatables/dataTables.select.min.js')}}"></script>
-<script src="{{ asset('assets/libs/pdfmake/pdfmake.min.js')}}"></script>
-<script src="{{ asset('assets/libs/pdfmake/vfs_fonts.js')}}"></script>
-@include('extends/table-footer')
-@include('extends/SA-footer')
+	@include('extends/table-footer')
+	@include('extends/SA-footer')
 @endsection
 	

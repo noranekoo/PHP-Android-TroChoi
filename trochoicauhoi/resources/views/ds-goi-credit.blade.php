@@ -9,8 +9,9 @@
 	<div class="col-lg-6">
 		 <div class="card">
 			<div class="card-body">
-				 <div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-						<h2 class="header-title">Danh Sách Gói Credit</h2></div>
+				<div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+				    <h2 class="header-title">Danh Sách Gói Credit</h2>
+                </div>
 				<table table id="basic-datatable" class="table dt-responsive nowrap">
 					<thead>
 						<tr>

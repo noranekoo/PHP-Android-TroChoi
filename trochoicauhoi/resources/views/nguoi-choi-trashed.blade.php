@@ -13,8 +13,8 @@ Thùng rác lĩnh vực
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Tên lĩnh vực</th>
-							<th></th>
+							<th>Người chơi</th>
+							<th>Email</th>
 						</tr>
 					</thead>
 

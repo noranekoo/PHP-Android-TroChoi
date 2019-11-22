@@ -27,7 +27,8 @@ class NguoiChoiRequest extends FormRequest
             'ten_dang_nhap'=>'bail|required|min:6|max:20|unique:nguoi_choi,ten_dang_nhap',
             'mat_khau'=>'bail|required|min:6:max:20|',
             'mat_khau_reinput'=>'bail|same:mat_khau',
-            'email'=>'bail|required|email|unique:nguoi_choi,email'
+            'email'=>'bail|required|email|unique:nguoi_choi,email',
+            'hinh_dai_dien'=>'image'
         ];
     }
     public function messages()
@@ -43,7 +44,8 @@ class NguoiChoiRequest extends FormRequest
             'mat_khau_reinput.same'=>'Mật khẩu nhập lại phải trùng nhau',
             'email.required'=>'Email không được để trống',
             'email.unique'=>'Email không khả dụng, vui lòng chọn email khác',
-            'email.email'=>'Email không hợp lệ'
+            'email.email'=>'Email không hợp lệ',
+            'hinh_dai_dien.image'=>'Ảnh đại diện phải có đuôi là .jpeg, .png, .jpg'
         ];
     }
 }

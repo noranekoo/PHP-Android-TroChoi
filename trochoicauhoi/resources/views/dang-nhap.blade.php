@@ -2,13 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Upvex - Responsive Admin Dashboard Template</title>
+        <title>LTD - Admin page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/ltd.ico">
 
         <!-- App css -->
         <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@
                                 
                                 <div class="text-center w-75 m-auto">
                                     <a href="#">
-                                        <span><img src="{{ asset('assets/images/logo-dark.png')}}" alt="" height="26"></span>
+                                        <span><img src="{{ asset('assets/images/logo-cerbercus.png')}}" alt="" height="26"></span>
                                     </a>
                                     <p class="text-muted mb-4 mt-3">Nhập vào tên đăng nhập và mật khẩu của bạn để truy cập admin panel</p>
                                 </div>

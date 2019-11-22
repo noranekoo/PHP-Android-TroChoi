@@ -24,8 +24,7 @@ Thùng rác câu hỏi
 						<tr>
 							<td>{{$ch->id}}</td>
 							<td>{{$ch->noi_dung}}</td>
-<!-- 							<td>{{App\LinhVuc::find($ch->linh_vuc_id)->ten_linh_vuc}}</td>
- -->
+							<td>{{App\LinhVuc::find($ch->linh_vuc_id)->ten_linh_vuc}}
 							<td>
 								<form action="{{ url('/cau-hoi/thung-rac/xoa/'.$ch->id) }}"	method="GET">
 									<a href="{{ url('/cau-hoi/thung-rac/khoi-phuc/'.$ch->id) }}" class="btn btn-success waves-effect waves-light "><i class="fe-heart"></i></a> 

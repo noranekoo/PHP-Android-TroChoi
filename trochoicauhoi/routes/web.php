@@ -10,9 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('something',function(){
-	return view('somethingelse');
-});
+// Route::get('something',function(){
+// 	$dsGoiCredit = App\GoiCredit::all();
+// 	return view('somethingelse',compact('dsGoiCredit'));
+// });
+Route::get('lock-screen',function(){
+	return view('lock-screen');
+})->name('lock-screen');
+Route::post('lock-screen','QuanTriVienController@xuLyKhoaManHinh')->name('lock');
+Route::post('something','QuanTriVienController@xuLyUpLoad');
 Route::get('dang-nhap','QuanTriVienController@dangNhap')->name('dangnhap')->middleware('guest');
 Route::get('dang-xuat','QuanTriVienController@dangXuat')->name('dangxuat');
 Route::post('dang-nhap','QuanTriVienController@xuLyDangNhap')->name('dangnhap.xuly');
@@ -76,10 +82,17 @@ Route::middleware('auth')->group(function(){
 		})->name('goicredit.themmoi');
 
 		Route::get('xoa/{id}','GoiCreditController@Delete');
-		Route::get('','GoiCreditController@create')->name('goicredit');
+		Route::get('/','GoiCreditController@create')->name('goicredit');
 		Route::get('/{id}','GoiCreditController@show')->name('goicredit.get');
 		Route::post('/{id}','GoiCreditController@update')->name('goicredit.capnhat');
-		Route::post('','GoiCreditController@store')->name('goicredit.themmoipost');
+		Route::post('/','GoiCreditController@store')->name('goicredit.themmoipost');
 
+	});
+	Route::prefix('lich-su')->group(function(){
+		Route::prefix('choi/')->group(function(){
+			Route::get('/{id}','LichSuChoiController@index')->name('ls-choi');
+			Route::get('/chi-tiet/{id}','LichSuChoiController@chiTietLuotChoi')->name('ls-choi.detail');
+		});
+		Route::get('/mua-credit/{id}','LichSuMuaCreditController@index')->name('ls-mua-credit');
 	});
 });
