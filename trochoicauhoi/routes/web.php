@@ -18,7 +18,9 @@ Route::get('lock-screen',function(){
 	return view('lock-screen');
 })->name('lock-screen');
 Route::post('lock-screen','QuanTriVienController@xuLyKhoaManHinh')->name('lock');
-Route::post('something','QuanTriVienController@xuLyUpLoad');
+Route::get('something',function(){
+	return view('somethingelse');
+});
 Route::get('dang-nhap','QuanTriVienController@dangNhap')->name('dangnhap')->middleware('guest');
 Route::get('dang-xuat','QuanTriVienController@dangXuat')->name('dangxuat');
 Route::post('dang-nhap','QuanTriVienController@xuLyDangNhap')->name('dangnhap.xuly');

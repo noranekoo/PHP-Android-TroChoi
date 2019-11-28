@@ -32,7 +32,7 @@
                 <td>
                   <form action="{{ url('/linh-vuc/xoa/'.$lv->id) }}" method="GET">
                     <a href="{{ url('/linh-vuc/'.$lv->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline"></i></a>
-                   <button class="btn btn-danger waves-effect waves-light" id="sa-warning"><i class="mdi mdi-close"></i></button>
+                    <button class="btn btn-danger waves-effect waves-light" id="sa-warning"><i class="mdi mdi-close"></i></button>
                   </form>
                 </td>
               </tr>

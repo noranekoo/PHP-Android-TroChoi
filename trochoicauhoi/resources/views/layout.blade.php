@@ -7,14 +7,10 @@
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('assets/images/ltd.ico') }}">
+        @include('extends/icon')
         @yield('css')
         @include('sweetalert::alert')
-        <!-- App css -->
-        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+        @include('extends/app-css')
     </head>
     <body>
         <!-- Navigation Bar-->
@@ -331,12 +327,8 @@
 
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
-
-        <!-- Vendor js -->
-        <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
+        @include('extends/js')
         @yield('js')
-        <!-- App js-->
-        <script src="{{ asset('assets/js/app.min.js') }}"></script>
         <!--Sweet Alert -->
         <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
         

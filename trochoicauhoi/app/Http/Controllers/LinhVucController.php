@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CauHoi;
 use App\LinhVuc;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -19,7 +20,6 @@ class LinhVucController extends Controller
     {
         
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -40,7 +40,6 @@ class LinhVucController extends Controller
     public function store(LinhVucRequest $request)
     {
         //Alert::alert('Title', 'Message', 'Type');
-
         $linhvuc = new LinhVuc;
         $linhvuc->ten_linh_vuc = $request->input('ten_linh_vuc');
         $linhvuc->save();    
@@ -101,10 +100,19 @@ class LinhVucController extends Controller
     }
     public function Delete($id)
     {
-        $linhvuc = LinhVuc::find($id);
-        $linhvuc->delete();
-        alert()->success('','Xóa lĩnh vực thành công !!');
-        return redirect()->route('linhvuc');
+        $ktRangBuoc = CauHoi::where('linh_vuc_id',$id)->get();
+        if( isset($ktRangBuoc) )
+        {
+            alert()->error('Xóa lĩnh vực thất bại !!','Vui lòng xóa các câu hỏi sử dụng lĩnh vực này');
+            return redirect()->route('linhvuc');
+        }
+        else
+        {
+            $linhvuc = LinhVuc::find($id);
+            $linhvuc->delete();
+            alert()->success('','Xóa lĩnh vực thành công !!');
+            return redirect()->route('linhvuc');
+        }
     }
     public function forceDelete($id)
     {

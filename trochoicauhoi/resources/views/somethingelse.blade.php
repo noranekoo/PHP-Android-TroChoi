@@ -1,103 +1,89 @@
-@extends('layout')
-@section('css')
-  @include('extends/table-header')
-  @include('extends/SA-header')
-@endsection
-@section('main-content')
-@include('sweetalert::alert')
-<div class="row">
-  <div class="col-lg-6">
-     <div class="card">
-      <div class="card-body">
-        <div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-            <h2 class="header-title">Danh Sách Gói Credit</h2>
+<div class="right-bar">
+            <div class="rightbar-title">
+                <a href="javascript:void(0);" class="right-bar-toggle float-right">
+                    <i class="mdi mdi-close"></i>
+                </a>
+                <h5 class="m-0 text-white">Settings</h5>
+            </div>
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 302px;"><div class="slimscroll-menu" style="overflow: hidden; width: auto; height: 302px;">
+                <!-- User box -->
+                <div class="user-box">
+                    <div class="user-img">
+                        <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle img-fluid">
+                        <a href="javascript:void(0);" class="user-edit"><i class="mdi mdi-pencil"></i></a>
+                    </div>
+            
+                    <h5><a href="javascript: void(0);">Marcia J. Melia</a> </h5>
+                    <p class="text-muted mb-0"><small>Product Owner</small></p>
                 </div>
-        <table table id="basic-datatable" class="table dt-responsive nowrap">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Tên gói Credit</th>
-              <th>Credit</th>
-              <th>Số tiền</th>
-              <th></th>
-            </tr>
-          </thead>
 
-          <tbody>
-            @foreach($dsGoiCredit as $gc)           
-            <tr>
-              <td>{{$gc->id}}</td>
-              <td>{{$gc->ten_goi_credit}}</td>
-              <td>{{$gc->credit}}</td>
-              <td>{{$gc->so_tien}}</td>
-              <td>
-                                <form action="{{ url('/goi-credit/xoa/'.$gc->id) }}" method="GET">
-                    <a href="{{ url('/goi-credit/'.$gc->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline" ></i></a> 
-                    <button class="btn btn-danger waves-effect waves-light" id="sa-warning"><i class="mdi mdi-close sa-warning"></i></button>
-                                </form>
-              </td>
-
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
-
-      </div> <!-- end card body -->
-      
-    </div> <!-- end card -->
-  </div><!-- end col-->
-        <div class="col-lg-6">
-                @if( $errors->any() )
-                <div class="alert alert-danger alert-dismissable fade show" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">x</span>
-                    </button>
-                    <ul>
-                        @foreach( $errors->all() as $error )
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                <!-- Settings -->
+                <hr class="mt-0">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <h4 class="mb-1 mt-0">8,504</h4>
+                        <p class="m-0">Balance</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <h4 class="mb-1 mt-0">8,504</h4>
+                        <p class="m-0">Balance</p>
+                    </div>
                 </div>
-                @endif
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="mb-3 header-title">
-                                {{ isset($dsGoiCredit2) ? 'Cập nhật gói Credit' : 'Thêm mới gói Credit' }}</h4>
-                                <form action="{{ isset($dsGoiCredit2) ? route('goicredit.capnhat',$dsGoiCredit2->id) :
-                                route('goicredit.themmoipost') }}" method="POST">
-                                  @csrf
-                                    @if ( isset($dsGoiCredit2) )
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">ID</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{ isset($dsGoiCredit2->id) ? $dsGoiCredit2->id : ''}}" aria-describedby="emailHelp"disabled="true">
-                                    </div>
-                                    @endif
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Tên gói Credit</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tên gói credit"
-                                        value="{{ isset($dsGoiCredit2->id) ? $dsGoiCredit2->ten_goi_credit : ''}}" name="ten_goi_credit" >
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Credit</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" 
-                                        value="{{ isset($dsGoiCredit2->id) ? $dsGoiCredit2->credit : ''}}" name="credit" >
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Số tiền</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" 
-                                        value="{{ isset($dsGoiCredit2->id) ? $dsGoiCredit2->so_tien : ''}}" name="so_tien" >
-                                    </div>
-                                    <button type="submit" class="btn btn-primary waves-effect waves-light"> {{ isset($dsGoiCredit2) ? 'Cập nhật' : 'Thêm mới' }}</h4></button>
-                                </form>
+                <hr class="mb-0">
 
-                            </div> <!-- end card-body-->
-                        </div> <!-- end card -->
-                    </div> -->
-</div>
-</div>
-@endsection
+                <div class="p-3">
+                    <div class="custom-control custom-switch mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
+                        <label class="custom-control-label" for="customSwitch1">Notifications</label>
+                    </div>
+                    <div class="custom-control custom-switch mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                        <label class="custom-control-label" for="customSwitch2">API Access</label>
+                    </div>
+                    <div class="custom-control custom-switch mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch3" checked="">
+                        <label class="custom-control-label" for="customSwitch3">Auto Updates</label>
+                    </div>
+                    <div class="custom-control custom-switch mb-2">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch4" checked="">
+                        <label class="custom-control-label" for="customSwitch4">Online Status</label>
+                    </div>
+                </div>
 
-@section('js')
-  @include('extends/table-footer')
-  @include('extends/SA-footer')
-@endsection
+                <!-- Timeline -->
+                <hr class="mt-0">
+                <h5 class="pl-3 pr-3">Messages <span class="float-right badge badge-pill badge-danger">25</span></h5>
+                <hr class="mb-0">
+                <div class="p-3">
+                    <div class="inbox-widget">
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/users/user-2.jpg" class="rounded-circle" alt=""></div>
+                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Tomaslau</a></p>
+                            <p class="inbox-item-text">I've finished it! See you so...</p>
+                        </div>
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/users/user-3.jpg" class="rounded-circle" alt=""></div>
+                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Stillnotdavid</a></p>
+                            <p class="inbox-item-text">This theme is awesome!</p>
+                        </div>
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/users/user-4.jpg" class="rounded-circle" alt=""></div>
+                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Kurafire</a></p>
+                            <p class="inbox-item-text">Nice to meet you</p>
+                        </div>
+
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/users/user-5.jpg" class="rounded-circle" alt=""></div>
+                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Shahedk</a></p>
+                            <p class="inbox-item-text">Hey! there I'm available...</p>
+                        </div>
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/users/user-6.jpg" class="rounded-circle" alt=""></div>
+                            <p class="inbox-item-author"><a href="javascript: void(0);" class="text-dark">Adhamdannaway</a></p>
+                            <p class="inbox-item-text">This theme is awesome!</p>
+                        </div>
+                    </div> <!-- end inbox-widget -->
+                </div> <!-- end .p-3-->
+
+            </div><div class="slimScrollBar" style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 72px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 105.683px;"></div><div class="slimScrollRail" style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div> <!-- end slimscroll-menu-->
+        </div>
