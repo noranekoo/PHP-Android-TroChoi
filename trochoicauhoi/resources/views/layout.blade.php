@@ -58,7 +58,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="{{ route('admin-profile') }}" class="dropdown-item notify-item">
                                     <i class="fe-user"></i>
                                     <span>Tài khoản của tôi</span>
                                 </a>
@@ -73,7 +73,7 @@
                                 <!-- item-->
                                 <a href="/dang-xuat" class="dropdown-item notify-item">
                                     <i class="fe-log-out"></i>
-                                    <span>Logout</span>
+                                    <span>Đăng xuất</span>
                                 </a>
 
                             </div>
@@ -83,7 +83,7 @@
 
                     <!-- LOGO -->
                     <div class="logo-box">
-                        <a href="index.html" class="logo text-center">
+                        <a href="{{route('dashboard')}}" class="logo text-center">
                             <span class="logo-lg">
                                 <img src="{{ asset('assets/images/logo-cerbercus.png') }}" alt="" height="26">
                                 <!-- <span class="logo-lg-text-dark">Upvex</span> -->

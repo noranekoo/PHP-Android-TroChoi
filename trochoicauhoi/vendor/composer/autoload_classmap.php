@@ -48,6 +48,7 @@ return array(
     'App\\Http\\Requests\\GoiCreditRequest' => $baseDir . '/app/Http/Requests/GoiCreditRequest.php',
     'App\\Http\\Requests\\LinhVucRequest' => $baseDir . '/app/Http/Requests/LinhVucRequest.php',
     'App\\Http\\Requests\\NguoiChoiRequest' => $baseDir . '/app/Http/Requests/NguoiChoiRequest.php',
+    'App\\Http\\Requests\\QuanTriVienRequest' => $baseDir . '/app/Http/Requests/QuanTriVienRequest.php',
     'App\\LichSuMuaCredit' => $baseDir . '/app/LichSuMuaCredit.php',
     'App\\LinhVuc' => $baseDir . '/app/LinhVuc.php',
     'App\\LuotChoi' => $baseDir . '/app/LuotChoi.php',

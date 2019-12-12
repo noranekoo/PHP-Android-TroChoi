@@ -479,6 +479,7 @@ class ComposerStaticInita27b721d407dc7500128b34cf30660c1
         'App\\Http\\Requests\\GoiCreditRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GoiCreditRequest.php',
         'App\\Http\\Requests\\LinhVucRequest' => __DIR__ . '/../..' . '/app/Http/Requests/LinhVucRequest.php',
         'App\\Http\\Requests\\NguoiChoiRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NguoiChoiRequest.php',
+        'App\\Http\\Requests\\QuanTriVienRequest' => __DIR__ . '/../..' . '/app/Http/Requests/QuanTriVienRequest.php',
         'App\\LichSuMuaCredit' => __DIR__ . '/../..' . '/app/LichSuMuaCredit.php',
         'App\\LinhVuc' => __DIR__ . '/../..' . '/app/LinhVuc.php',
         'App\\LuotChoi' => __DIR__ . '/../..' . '/app/LuotChoi.php',

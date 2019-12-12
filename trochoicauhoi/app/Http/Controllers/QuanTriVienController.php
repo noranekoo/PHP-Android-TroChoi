@@ -9,6 +9,7 @@ use App\Http\Requests\DangNhapRequest;
 use Illuminate\Support\Facades\Auth;
 use App\QuanTriVien;
 use Illuminate\Http\Request;
+use App\Http\Requests\QuanTriVienRequest;
 class QuanTriVienController extends Controller
 {
     /**
@@ -18,7 +19,7 @@ class QuanTriVienController extends Controller
      */
     public function index()
     {
-        //
+       return view('admin-profile');
     }
 
     /**
@@ -108,9 +109,32 @@ class QuanTriVienController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $admin = QuanTriVien::find($id);
+        $admin->ho_ten = $request->input('hoten');
+        $admin->gioi_thieu = $request->input('gioithieu');
+        $admin->sdt = $request->input('sdt');
+        $admin->email = $request->input('email');
+        $admin->save();
+        alert()->success('','Sửa thành công !!');
+        return redirect()->route('admin-profile');
     }
-
+     public function DoiMatKhau(QuanTriVienRequest $request, $id)
+    {
+        $admin = QuanTriVien::find($id);
+        $mat_khau_cu = Hash::check($request->input('old_matkhau'),$admin->mat_khau);
+        if ( $mat_khau_cu )
+        {
+            $admin->mat_khau = Hash::make($request->input('new_matkhau'));
+            $admin->save();
+            alert()->success('','Đổi mật khẩu thành công !!'); 
+            return redirect()->route('admin-profile');
+        }
+        else
+        {
+            alert()->error('','Mật khẩu cũ không đúng!!'); 
+            return redirect()->route('admin-profile');
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *

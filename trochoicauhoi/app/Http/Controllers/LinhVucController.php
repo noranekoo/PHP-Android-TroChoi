@@ -103,7 +103,8 @@ class LinhVucController extends Controller
         $ktRangBuoc = CauHoi::where('linh_vuc_id',$id)->get();
         if( isset($ktRangBuoc) )
         {
-            alert()->error('Xóa lĩnh vực thất bại !!','Vui lòng xóa các câu hỏi sử dụng lĩnh vực này');
+            $demCauHoi = CauHoi::where('linh_vuc_id',$id)->get()->count();
+            alert()->error('Xóa lĩnh vực thất bại !!','Vui lòng xóa '.$demCauHoi.' câu hỏi sử dụng lĩnh vực này');
             return redirect()->route('linhvuc');
         }
         else
