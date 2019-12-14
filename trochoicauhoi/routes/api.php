@@ -27,5 +27,5 @@ Route::get('nguoi-choi','API\NguoiChoiController@layDSNguoiChoi');
 Route::post('dang-nhap', 'API\NguoiChoiLoginController@login');
 Route::group(['assign.guard:api','jwt.auth'], function () {
     Route::get('lay-thong-tin','API\NguoiChoiLoginController@getUser');
-    Route::get('ok','API\NguoiChoiLoginController@thongtin');
+    //Route::get('ok','API\NguoiChoiLoginController@thongtin');
 });
