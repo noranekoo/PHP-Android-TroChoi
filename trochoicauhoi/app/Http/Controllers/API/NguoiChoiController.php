@@ -88,40 +88,56 @@ class NguoiChoiController extends Controller
     {
         $page = $request->query('page',1);
         $limit = $request->query('limit',25);
-        $listNguoiChoi = NguoiChoi::orderBy('diem_cao_nhat','desc')->skip(($page-1)*$limit)->take($limit)->get();
-        return response()->json([
-            'total'=>NguoiChoi::count(),
-            'data'=>$listNguoiChoi
-        ]);
+
+        if(auth('api')->check())
+        {
+            $listNguoiChoi = NguoiChoi::orderBy('diem_cao_nhat','desc')->skip(($page-1)*$limit)->take($limit)->get();
+        return response()->json(
+            [
+                'total'=>NguoiChoi::count(),
+                'data'=>$listNguoiChoi
+            ]);
+        }
+        return response()->json(['success'=>false, 'message'=>'Token is required']);
+        
     }
     public function layNguoiChoi($id)
     {
-        $nguoiChoi = NguoiChoi::find($id);
-        $result = ['success'=>true,'data'=>$nguoiChoi];
-        return response()->json($result);
+        if(auth('api')->check())
+        {
+            $nguoiChoi = NguoiChoi::find($id);
+            $result = ['success'=>true,'data'=>$nguoiChoi];
+            return response()->json($result);
+        }
+        return response()->json(['success'=>false, 'message'=>'Token is required']);
     } 
     public function top10()
     {
-        $top10 = NguoiChoi::orderBy('diem_cao_nhat','desc')->get();
+        if(auth('api')->check())
+        {
+            $top10 = NguoiChoi::orderBy('diem_cao_nhat','desc')->get();
         
-        $result = ['success'=>true,'data'=>$top10];
-        return response()->json($result);
-    }
-    public function DangNhap(Request $request)
-    {
-        $thongtin = $request->only(['ten_dang_nhap','mat_khau']);
-        $nguoichoi = NguoiChoi::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
-        if( $nguoichoi == null )
-        {
-           $result = ['success'=>false];
-           return response()->json($result);
-        }
-        if( !Hash::check($thongtin['mat_khau'], $nguoichoi->mat_khau ))
-        {
-            $result = ['success'=>false];
+            $result = ['success'=>true,'data'=>$top10];
             return response()->json($result);
         }
-        $result = ['success'=>true];
-        return response()->json($result);
+        return response()->json(['success' => false, 'message' => 'Token is required']);
+        
     }
+    // public function DangNhap(Request $request)
+    // {
+    //     $thongtin = $request->only(['ten_dang_nhap','mat_khau']);
+    //     $nguoichoi = NguoiChoi::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
+    //     if( $nguoichoi == null )
+    //     {
+    //        $result = ['success'=>false];
+    //        return response()->json($result);
+    //     }
+    //     if( !Hash::check($thongtin['mat_khau'], $nguoichoi->mat_khau ))
+    //     {
+    //         $result = ['success'=>false];
+    //         return response()->json($result);
+    //     }
+    //     $result = ['success'=>true];
+    //     return response()->json($result);
+    // }
 }

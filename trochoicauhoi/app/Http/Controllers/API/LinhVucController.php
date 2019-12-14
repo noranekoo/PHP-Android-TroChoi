@@ -14,9 +14,13 @@ class LinhVucController extends Controller
      */
     public function index()
     {
-        $linhvuc = LinhVuc::all()->random(4);
-        $result = ['success' => true, 'arr'=>$linhvuc];
-        return response()->json($result);
+        if(auth('api')->check())
+        {
+            $linhvuc = LinhVuc::all()->random(4);
+            $result = ['success' => true, 'arr'=>$linhvuc];
+            return response()->json($result);
+        }
+        return response()->json(['success'=>false, 'message'=>'Token is required']);
     }
     public function trangThai(){
         

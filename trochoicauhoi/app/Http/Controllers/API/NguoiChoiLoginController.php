@@ -5,9 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-use JWTAuth;
+//use JWTAuth;
 use JWTAuthException;
 use Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class NguoiChoiLoginController extends Controller
 {
@@ -25,14 +26,15 @@ class NguoiChoiLoginController extends Controller
         } catch (JWTAuthException $e) {
             return response()->json(['failed_to_create_token'], 500);
         }
+        $request->headers->set('Authorization','Bearer '.$token);
         return response()->json([
             'token' => $token,
             'type'  => 'bearer'
         ]);
     }
-
     
-    public function getUser(){
+    public function getUser(Request $request){
         return auth('api')->user();
     }
+    
 }
