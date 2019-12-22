@@ -17,7 +17,7 @@
                     <span class="badge badge-light-secondary badge-pill">Laravel</span>
                     <span class="badge badge-light-success badge-pill">Python</span>
                 </div>
-                <p class="text-muted mt-3">I'M BATMAN.</p>
+                 <p class="text-muted mt-3">{{ App\QuanTriVien::find(3)->gioi_thieu }}</p>
             </div> <!-- end .padding -->
         </div> <!-- end card-box-->
     </div> <!-- end col -->
@@ -34,7 +34,7 @@
                     <span class="badge badge-light-info badge-pill">PHP</span>
                     <span class="badge badge-light-dark badge-pill">Nodejs</span>
                 </div>
-                <p class="text-muted mt-3">I dont</p>
+                 <p class="text-muted mt-3">{{ App\QuanTriVien::find(2)->gioi_thieu }}</p>
             </div> <!-- end .padding -->
         </div> <!-- end card-box-->
     </div> <!-- end col -->
@@ -50,9 +50,7 @@
                     <span class="badge badge-light-success badge-pill">React</span>
                     <span class="badge badge-light-secondary badge-pill">Angular</span>
                 </div>
-                <p class="text-muted mt-3">Rose is red.
-                Sea is blue.
-            	You are mine</p> 
+                 <p class="text-muted mt-3">{{ App\QuanTriVien::find(1)->gioi_thieu }}</p> 
             </div> <!-- end .padding -->
         </div> <!-- end card-box-->
     </div> <!-- end col -->

@@ -28,6 +28,13 @@ Route::middleware('auth')->group(function(){
 	Route::get('/',function(){
 		return view('dashboard');
 	})->name('dashboard');
+	
+	Route::prefix('admin-profile')->group(function(){
+		Route::get('/','QuanTriVienController@index')->name('admin-profile');
+		Route::post('/{id}','QuanTriVienController@update')->name('admin-profile.post');
+		Route::post('/{id}/change-password','QuanTriVienController@DoiMatKhau')->name('change-password');
+	});
+	
 	Route::prefix('cau-hoi')->group(function(){
 		Route::prefix('thung-rac')->group(function(){
 			Route::get('','CauHoiController@onlyTrashed')->name('cauhoi.thungrac');
