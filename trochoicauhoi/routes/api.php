@@ -22,6 +22,7 @@ Route::get('cau-hoi/{id}','API\CauHoiController@show');
 Route::get('cau-hoi','API\CauHoiController@layDSCauHoiTheoLV');
 //Route::get('nguoi-choi/{id}','API\NguoiChoiController@layNguoiChoi');	
 Route::get('diem-cao','API\NguoiChoiController@top10');
+Route::get('luot-choi/{id}','API\NguoiChoiController@lichSuChoi');
 //Route::post('dang-nhap','API\NguoiChoiController@DangNhap');
 Route::get('nguoi-choi','API\NguoiChoiController@layDSNguoiChoi');
 Route::post('dang-nhap', 'API\NguoiChoiLoginController@login');

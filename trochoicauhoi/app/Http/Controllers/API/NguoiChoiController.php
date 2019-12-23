@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\NguoiChoi;
+use App\LuotChoi;
 use Illuminate\Support\Facades\Hash;
 
 class NguoiChoiController extends Controller
@@ -110,7 +111,7 @@ class NguoiChoiController extends Controller
             return response()->json($result);
         }
         return response()->json(['success'=>false, 'message'=>'Token is required']);
-    } 
+    }
     public function top10()
     {
         if(auth('api')->check())
@@ -122,6 +123,17 @@ class NguoiChoiController extends Controller
         }
         return response()->json(['success' => false, 'message' => 'Token is required']);
         
+    }
+
+    public function lichSuChoi($id)
+    {
+        if(auth('api')->check())
+        {
+            $lichSuChoi = LuotChoi::where('nguoi_choi_id',$id)->get();
+            $result = ['total'=>$lichSuChoi->count(), 'data'=>$lichSuChoi];
+            return response()->json($result);
+        }
+        return response()->json(['success' => false, 'message' => 'Token is required']);
     }
     // public function DangNhap(Request $request)
     // {
