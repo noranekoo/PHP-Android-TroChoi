@@ -24,8 +24,9 @@ Route::get('cau-hoi','API\CauHoiController@layDSCauHoiTheoLV');
 Route::get('diem-cao','API\NguoiChoiController@top10');
 Route::get('luot-choi/{id}','API\NguoiChoiController@lichSuChoi');
 //Route::post('dang-nhap','API\NguoiChoiController@DangNhap');
-Route::get('nguoi-choi','API\NguoiChoiController@layDSNguoiChoi');
+Route::get('nguoi-choi','API\NguoiChoiController@layBangXepHang');
 Route::post('dang-nhap', 'API\NguoiChoiLoginController@login');
+Route::post('dang-ky','API\NguoiChoiController@dangKy');
 Route::group(['assign.guard:api','jwt.auth'], function () {
     Route::get('lay-thong-tin','API\NguoiChoiLoginController@getUser');
     //Route::get('ok','API\NguoiChoiLoginController@thongtin');

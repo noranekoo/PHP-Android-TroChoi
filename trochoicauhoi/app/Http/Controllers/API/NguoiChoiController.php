@@ -85,7 +85,7 @@ class NguoiChoiController extends Controller
     {
         //
     }
-    public function layDSNguoiChoi(Request $request)
+    public function layBangXepHang(Request $request)
     {
         $page = $request->query('page',1);
         $limit = $request->query('limit',25);
@@ -93,11 +93,11 @@ class NguoiChoiController extends Controller
         if(auth('api')->check())
         {
             $listNguoiChoi = NguoiChoi::orderBy('diem_cao_nhat','desc')->skip(($page-1)*$limit)->take($limit)->get();
-        return response()->json(
-            [
-                'total'=>NguoiChoi::count(),
-                'data'=>$listNguoiChoi
-            ]);
+            return response()->json(
+                [
+                    'total'=>NguoiChoi::count(),
+                    'data'=>$listNguoiChoi
+                ]);
         }
         return response()->json(['success'=>false, 'message'=>'Token is required']);
         
@@ -134,6 +134,23 @@ class NguoiChoiController extends Controller
             return response()->json($result);
         }
         return response()->json(['success' => false, 'message' => 'Token is required']);
+    }
+
+    public function dangKy(Request $request)
+    {
+        $nguoiChoi = new NguoiChoi();
+        $nguoiChoi->ten_dang_nhap = $request->ten_dang_nhap;
+        $nguoiChoi->mat_khau = Hash::make($request->mat_khau);
+        $nguoiChoi->email = $request->email;
+        $nguoiChoi->hinh_dai_dien = '';
+        $nguoiChoi->diem_cao_nhat = 0;
+        $nguoiChoi->credit = 0;
+        if(NguoiChoi::where('ten_dang_nhap','=',$nguoiChoi->ten_dang_nhap)->count() == 0)
+        {
+            $nguoiChoi->save();
+            return response()->json(['success'=>true, 'message'=>'Sign up success']);
+        }
+        return response()->json(['success'=>false, 'message'=>'ten_dang_nhap is exist']);
     }
     // public function DangNhap(Request $request)
     // {
