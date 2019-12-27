@@ -106,7 +106,7 @@ class CauHoiController extends Controller
         if(auth('api')->check())
         {
             $lvID = $id->id;
-            $dsCauHoi = CauHoi::where('linh_vuc_id',$lvID)->get()->random(6);
+            $dsCauHoi = CauHoi::where('linh_vuc_id',$lvID)->get();
             $result = ['success'=>true,'data'=>$dsCauHoi];
             return response()->json($result);
         }

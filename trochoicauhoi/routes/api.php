@@ -20,6 +20,7 @@ Route::get('linh-vuc','API\LinhVucController@index');
 Route::get('cau-hoi','API\CauHoiController@layDSCauHoi');
 Route::get('cau-hoi/{id}','API\CauHoiController@show');
 Route::get('cau-hoi','API\CauHoiController@layDSCauHoiTheoLV');
+Route::get('credit','API\GoiCreditController@layCredit');
 //Route::get('nguoi-choi/{id}','API\NguoiChoiController@layNguoiChoi');	
 Route::get('diem-cao','API\NguoiChoiController@top10');
 Route::get('luot-choi/{id}','API\NguoiChoiController@lichSuChoi');
