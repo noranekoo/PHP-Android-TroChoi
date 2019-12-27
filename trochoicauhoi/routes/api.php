@@ -20,15 +20,15 @@ Route::get('linh-vuc','API\LinhVucController@index');
 Route::get('cau-hoi','API\CauHoiController@layDSCauHoi');
 Route::get('cau-hoi/{id}','API\CauHoiController@show');
 Route::get('cau-hoi','API\CauHoiController@layDSCauHoiTheoLV');
+Route::get('cau-hinh-app','API\CauHinhController@layCauHinhApp');
+Route::get('cau-hinh-diem','API\CauHinhController@layCauHinhDiem');
+Route::get('cau-hinh-tro-giup','API\CauHinhController@layCauHinhTroGiup');
 Route::get('credit','API\GoiCreditController@layCredit');
-//Route::get('nguoi-choi/{id}','API\NguoiChoiController@layNguoiChoi');	
 Route::get('diem-cao','API\NguoiChoiController@top10');
 Route::get('luot-choi/{id}','API\NguoiChoiController@lichSuChoi');
-//Route::post('dang-nhap','API\NguoiChoiController@DangNhap');
 Route::get('nguoi-choi','API\NguoiChoiController@layBangXepHang');
 Route::post('dang-nhap', 'API\NguoiChoiLoginController@login');
 Route::post('dang-ky','API\NguoiChoiController@dangKy');
 Route::group(['assign.guard:api','jwt.auth'], function () {
     Route::get('lay-thong-tin','API\NguoiChoiLoginController@getUser');
-    //Route::get('ok','API\NguoiChoiLoginController@thongtin');
 });
