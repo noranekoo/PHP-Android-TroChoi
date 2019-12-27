@@ -9,6 +9,8 @@ use App\Http\Requests\DangNhapRequest;
 use Illuminate\Support\Facades\Auth;
 use App\QuanTriVien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 class QuanTriVienController extends Controller
 {
     /**
@@ -55,16 +57,21 @@ class QuanTriVienController extends Controller
         Auth::logout();
         return view('log-out');
     }
-     public function xuLyUpLoad(Request $request)
+     public function xuLyUpLoad(Request $request,$id)
     {
         $request->validate(['ten_input' =>'mimes:png,jpg']);
         if($request->hasFile('ten_input'))
         {
+            $delete = QuanTriVien::find($id);
+            Storage::delete('assets/images/users/'.$delete->anh_dai_dien);
             $file = $request->ten_input;
+            $delete->anh_dai_dien = $file->getClientOriginalName();
             $file->storeAs('assets/images/users',$file->getClientOriginalName());
-            return "<image url='assets/images/users/".$file->getClientOriginalName()."'' />";
+            alert()->success('','Đổi ảnh đại diện thành công !!'); 
+            return redirect()->route('admin-profile');
         }
-        return "upload thất bại";
+        alert()->error('','Đổi ảnh đại diện thất bại !!'); 
+        return redirect()->route('admin-profile');
     }
 
     /**

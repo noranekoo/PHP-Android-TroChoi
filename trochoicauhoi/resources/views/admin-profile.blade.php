@@ -76,10 +76,23 @@
                                         <i class="mdi mdi-timeline mr-1"></i>Đổi mật khẩu
                                     </a>
                                 </li>
+                                 <li class="nav-item">
+                                    <a href="#avatar" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <i class="mdi mdi-timeline mr-1"></i>Đổi ảnh đại diện
+                                    </a>
+                                </li>
                             </ul>
 
                             <div class="tab-content">
-                                
+                                <div class="tab-pane" id="avatar">
+                                    <form action="{{route('change-avatar',Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="file" name="ten_input" multiple >
+                                        <div class="text-left">
+                                            <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i class="mdi mdi-content-save"></i> Lưu</button>
+                                        </div>
+                                    </form>
+                                </div>
                                 <div class="tab-pane" id="settings">
                                      <form method="POST" action="{{route('change-password',Auth::user()->id)}}">
                                         @csrf
