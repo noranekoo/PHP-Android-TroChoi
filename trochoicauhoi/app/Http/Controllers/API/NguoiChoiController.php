@@ -136,17 +136,6 @@ class NguoiChoiController extends Controller
         return response()->json(['success' => false, 'message' => 'Token is required']);
     }
 
-    public function PlayerHistory($id)
-    {
-        $playerhistory = LuotChoi::where('nguoi_choi_id',$id)->get();
-        if ( $playerhistory != null ) 
-            return response()->json([
-                'success'=>true,
-                'data'=>$playerhistory;
-            ]);
-        return response()->json(['success'=>false]);
-    }
-
     public function dangKy(Request $request)
     {
         $nguoiChoi = new NguoiChoi();
@@ -162,6 +151,31 @@ class NguoiChoiController extends Controller
             return response()->json(['success'=>true, 'message'=>'Sign up success']);
         }
         return response()->json(['success'=>false, 'message'=>'ten_dang_nhap is exist']);
+    }
+
+    public function uploadImage(Request $request)
+    {
+        // if(auth('api')->check())
+        // {
+            $image = $request->image;  // your base64 encoded
+            $fileName = $request->ten_dang_nhap;
+            $image = str_replace('data:image/png;base64,', '', $image);
+            $image = str_replace(' ', '+', $image);
+            $imageName = $fileName.'.'.'png';
+            \File::put(storage_path(). '\images\users/' . $imageName, base64_decode($image));
+            return response()->json(['success'=>true]);
+        //}
+        
+    }
+    public function PlayerHistory($id)
+    {
+        $playerhistory = LuotChoi::where('nguoi_choi_id',$id)->get();
+        if ( $playerhistory != null ) 
+            return response()->json([
+                'success'=>true,
+                'data'=>$playerhistory;
+            ]);
+        return response()->json(['success'=>false]);
     }
     // public function DangNhap(Request $request)
     // {

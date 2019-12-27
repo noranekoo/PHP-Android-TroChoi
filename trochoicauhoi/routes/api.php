@@ -16,7 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('lich-su-choi/{id}','API\NguoiChoiController@PlayerHistory');
 Route::get('linh-vuc','API\LinhVucController@index');
 Route::get('cau-hoi','API\CauHoiController@layDSCauHoi');
 Route::get('cau-hoi/{id}','API\CauHoiController@show');
@@ -24,6 +23,7 @@ Route::get('cau-hoi','API\CauHoiController@layDSCauHoiTheoLV');
 Route::get('cau-hinh-app','API\CauHinhController@layCauHinhApp');
 Route::get('cau-hinh-diem','API\CauHinhController@layCauHinhDiem');
 Route::get('cau-hinh-tro-giup','API\CauHinhController@layCauHinhTroGiup');
+Route::post('cap-nhat-avatar','API\NguoiChoiController@uploadImage');
 Route::get('credit','API\GoiCreditController@layCredit');
 Route::get('diem-cao','API\NguoiChoiController@top10');
 Route::get('luot-choi/{id}','API\NguoiChoiController@lichSuChoi');
