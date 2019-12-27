@@ -172,19 +172,7 @@
                                         <a href="/cau-hinh/app"><i class="fas fa-atom"></i> App</a>
                                     </li>
                                     <li>
-                                        <a href="/goi-credit/thung-rac"><i class="fas fa-atom"></i> Trợ giúp</a>
-                                    </li>
-                                    <li class="has-submenu">
-                                       <a href="#"><i class="fe-trash-2"></i> Thùng rác <div class="arrow-down"></div></a>
-                                        <ul class="submenu">
-                                            <li>
-                                                <a href="">Điểm câu hỏi</a>
-                                            </li>
-                                            <li>
-                                                <a href="">Trợ giúp</a>
-                                            </li>
-                                        </ul>
-
+                                        <a href="/cau-hinh/tro-giup"><i class="fas fa-atom"></i> Trợ giúp</a>
                                     </li>
                                 </ul>
                             </li>

@@ -92,10 +92,23 @@ class CauHinhController extends Controller
         $dsCauHinhApp = CauHinhApp::find("1");
         return view('cau-hinh-app',compact('dsCauHinhApp'));
     }
+
     public function CauHinhDiemCauHoi()
     {
         $dsCauHinh = CauHinhDiemCauHoi::all();
         return view('cau-hinh-diem-cau-hoi',compact('dsCauHinh'));
+    }
+
+    public function CauHinhTroGiup() 
+    {
+        $dsCauHinh = CauHinhTroGiup::all();
+        return view('cau-hinh-tro-giup',compact('dsCauHinh'));
+    }
+    public function showCauHinhTroGiup($id)
+    {
+        $dsCauHinh = CauHinhTroGiup::all();
+        $CauHinh = CauHinhTroGiup::find($id);
+        return view('cau-hinh-tro-giup',compact('dsCauHinh','CauHinh'));
     }
     public function showCauHinhDiemCauHoi($id)
     {
@@ -103,6 +116,7 @@ class CauHinhController extends Controller
         $CauHinh = CauHinhDiemCauHoi::find($id);
         return view('cau-hinh-diem-cau-hoi',compact('dsCauHinh','CauHinh'));
     }
+
     public function editCauHinhApp(CauHinhAppRequest $request)
     {
         $CauHinhApp = CauHinhApp::find("1");
@@ -112,6 +126,7 @@ class CauHinhController extends Controller
         alert()->success('','Cập nhật thành công !!'); 
         return redirect()->route('cauhinh.app');
     }
+
     public function editCauHinhDiemCauHoi(CauHinhDiemCauHoiRequest $request,$id)
     {
         $CauHinhDiem = CauHinhDiemCauHoi::find($id);
@@ -121,6 +136,45 @@ class CauHinhController extends Controller
         alert()->success('','Cập nhật thành công !!'); 
         return redirect()->route('cauhinh.diem');
     }
+
+    public function editCauHinhDiemTroGiup(CauHinhTroGiupRequest $request,$id)
+    {
+        $CauHinhTroGiup = CauHinhTroGiup::find($id);
+        $CauHinhTroGiup->loai_tro_giup = $request->input('loai_tro_giup');
+        $CauHinhTroGiup->thu_tu = $request->input('thu_tu');
+        $CauHinhTroGiup->credit = $request->input('credit');
+        $CauHinhTroGiup->save();
+        alert()->success('','Cập nhật thành công !!'); 
+        return redirect()->route('cauhinh.trogiup');
+    }
+
+    public function deleteCauHinhDiemCauHoi($id)
+    {
+        if( $sl = CauHinhDiemCauHoi::all()->count() == 1 )
+        {
+            alert()->error('Xóa thất bại','Nếu xóa cấu hình này sẽ gây ra lỗi ở App ');
+            return redirect()->route('cauhinh.diem');            
+        }
+        $CauHinhDiem = CauHinhDiemCauHoi::find($id); 
+        $CauHinhDiem->delete();
+         alert()->success('','Xóa thành công !!'); 
+        return redirect()->route('cauhinh.diem');
+    }
+
+    public function deleteCauHinhTroGiup($id)
+    {
+        
+        if( $sl = CauHinhTroGiup::all()->count() == 1 )
+        {
+            alert()->error('Xóa thất bại','Nếu xóa cấu hình này sẽ gây ra lỗi ở App ');
+            return redirect()->route('cauhinh.trogiup');            
+        }
+        $CauHinhTroGiup = CauHinhTroGiup::find($id); 
+        $CauHinhTroGiup->delete();
+         alert()->success('','Xóa thành công !!'); 
+        return redirect()->route('cauhinh.trogiup');
+    }
+
     public function storeCauHinhDiemCauHoi(CauHinhDiemCauHoiRequest $request)
     {
         $CauHinhDiem = new CauHinhDiemCauHoi;
@@ -129,6 +183,16 @@ class CauHinhController extends Controller
         $CauHinhDiem->save();
         alert()->success('','Thêm thành công !!'); 
         return redirect()->route('cauhinh.diem');
+    }
+    public function storeCauHinhTroGiup(CauHinhTroGiupRequest $request)
+    {
+        $CauHinhTroGiup = new CauHinhTroGiup;
+        $CauHinhTroGiup->loai_tro_giup = $request->input('loai_tro_giup');
+        $CauHinhTroGiup->thu_tu = $request->input('thu_tu');
+        $CauHinhTroGiup->credit = $request->input('credit');
+        $CauHinhTroGiup->save();
+        alert()->success('','Thêm thành công !!'); 
+        return redirect()->route('cauhinh.trogiup');
     }
 
 }

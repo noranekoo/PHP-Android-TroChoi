@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function(){
 		Route::get('/','QuanTriVienController@index')->name('admin-profile');
 		Route::post('/{id}','QuanTriVienController@update')->name('admin-profile.post');
 		Route::post('/{id}/change-password','QuanTriVienController@DoiMatKhau')->name('change-password');
+		Route::post('/{id}/change-avatar','QuanTriVienController@xuLyUpLoad')->name('change-avatar');
 	});
 	
 	Route::prefix('cau-hoi')->group(function(){
@@ -109,10 +110,22 @@ Route::middleware('auth')->group(function(){
 			Route::post('','CauHinhController@editCauHinhApp')->name('cauhinh.app.edit');
 		});
 		Route::prefix('diem-cau-hoi')->group(function(){
+			Route::prefix('{id}')->group(function(){
+				Route::get('show','CauHinhController@showCauHinhDiemCauHoi')->name('cauhinh.diem.show');
+				Route::get('delete','CauHinhController@deleteCauHinhDiemCauHoi')->name('cauhinh.diem.delete');
+				Route::post('edit','CauHinhController@editCauHinhDiemCauHoi')->name('cauhinh.diem.edit');
+			});	
 			Route::get('','CauHinhController@CauHinhDiemCauHoi')->name('cauhinh.diem');
-			Route::get('\{id}','CauHinhController@showCauHinhDiemCauHoi')->name('cauhinh.diem.show');
-			Route::post('\{id}','CauHinhController@editCauHinhDiemCauHoi')->name('cauhinh.diem.edit');
 			Route::post('them-moi','CauHinhController@storeCauHinhDiemCauHoi')->name('cauhinh.diem.store');
+		});
+		Route::prefix('tro-giup')->group(function(){
+			Route::prefix('{id}')->group(function(){
+				Route::get('show','CauHinhController@showCauHinhTroGiup')->name('cauhinh.trogiup.show');
+				Route::get('delete','CauHinhController@deleteCauHinhTroGiup')->name('cauhinh.trogiup.delete');
+				Route::post('edit','CauHinhController@editCauHinhTroGiup')->name('cauhinh.trogiup.edit');
+			});
+			Route::get('','CauHinhController@CauHinhTroGiup')->name('cauhinh.trogiup');
+			Route::post('them-moi','CauHinhController@storeCauHinhTroGiup')->name('cauhinh.trogiup.store');
 		});
 	});
 });

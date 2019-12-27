@@ -32,7 +32,7 @@
                 <td>{{$lv->thu_tu}}</td>
                 <td>{{$lv->diem}}</td>
                 <td>
-                  <form action="" method="GET">
+                  <form action="{{ route('cauhinh.diem.delete',$lv->id) }}" method="GET">
                     <a href="{{ route('cauhinh.diem.show',$lv->id) }}" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-square-edit-outline"></i></a>
                     <button class="btn btn-danger waves-effect waves-light" id="sa-warning"><i class="mdi mdi-close"></i></button>
                   </form>
