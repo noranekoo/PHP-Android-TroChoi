@@ -63,9 +63,9 @@ class QuanTriVienController extends Controller
         if($request->hasFile('ten_input'))
         {
             $delete = QuanTriVien::find($id);
-            Storage::delete('assets/images/users/'.$delete->anh_dai_dien);
             $file = $request->ten_input;
             $delete->anh_dai_dien = $file->getClientOriginalName();
+            $delete->save();
             $file->storeAs('assets/images/users',$file->getClientOriginalName());
             alert()->success('','Đổi ảnh đại diện thành công !!'); 
             return redirect()->route('admin-profile');
