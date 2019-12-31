@@ -12,7 +12,7 @@ class CauHinhAppController extends Controller
     	if(auth('api')->check())
     	{
     		$cauHinhApp = App\CauHinhApp::all();
-    		return response()->json(['data'=>$cauHinhApp]);
+    		return response()->json(['success'=>true,'data'=>$cauHinhApp]);
     	}
     	return response()->json(['success'=>false, 'message'=> 'Token is required']);
     }

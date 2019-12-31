@@ -25,7 +25,7 @@ class CauHinhController extends Controller
     	if(auth('api')->check())
     	{
     		$cauHinhDiem = CauHinhDiemCauHoi::all();
-    		return response()->json(['data'=>$cauHinhDiem]);
+    		return response()->json(['success'=>true, 'data'=>$cauHinhDiem]);
     	}
     	return response()->json(['success'=>false, 'message'=> 'Token is required']);
     }
@@ -35,7 +35,7 @@ class CauHinhController extends Controller
     	if(auth('api')->check())
     	{
     		$cauHinhTroGiup = CauHinhTroGiup::all();
-    		return response()->json(['data'=>$cauHinhTroGiup]);
+    		return response()->json(['success'=>true, 'data'=>$cauHinhTroGiup]);
     	}
     	return response()->json(['success'=>false, 'message'=> 'Token is required']);
     }

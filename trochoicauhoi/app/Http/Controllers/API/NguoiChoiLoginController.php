@@ -21,13 +21,14 @@ class NguoiChoiLoginController extends Controller
         $token = null;
         try {
            if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['message'=>'Sai tên đăng nhập hoặc mật khẩu'], 422);
+            return response()->json(['success'=>false,'message'=>'Sai tên đăng nhập hoặc mật khẩu'], 422);
            }
         } catch (JWTAuthException $e) {
             return response()->json(['Failed to create token'], 500);
         }
         $request->headers->set('Authorization','Bearer '.$token);
         return response()->json([
+            'success'=>true,
             'token' => $token,
             'type'  => 'bearer'
         ]);

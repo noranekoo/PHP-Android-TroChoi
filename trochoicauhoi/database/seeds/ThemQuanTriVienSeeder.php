@@ -12,14 +12,14 @@ class ThemQuanTriVienSeeder extends Seeder
      */
     public function run()
     {
+        // QuanTriVien::create(
+        // 	[ 'ten_dang_nhap'=>'admin1','mat_khau'=>Hash::make('123456'),'ho_ten'=>'Nguyễn Anh Thi' ]
+        // );
+        // QuanTriVien::create(
+        // 	[ 'ten_dang_nhap'=>'admin2','mat_khau'=>Hash::make('123456'),'ho_ten'=>'Lê Đình Bảo Duy' ]
+        // );
         QuanTriVien::create(
-        	[ 'ten_dang_nhap'=>'admin1','mat_khau'=>Hash::make('123456'),'ho_ten'=>'Nguyễn Anh Thi' ]
-        );
-        QuanTriVien::create(
-        	[ 'ten_dang_nhap'=>'admin2','mat_khau'=>Hash::make('123456'),'ho_ten'=>'Lê Đình Bảo Duy' ]
-        );
-        QuanTriVien::create(
-        	[ 'ten_dang_nhap'=>'admin3','mat_khau'=>Hash::make('123456'),'ho_ten'=>'Nguyễn Hiếu Luân' ]
+        	[ 'ten_dang_nhap'=>'admin3','mat_khau'=>Hash::make('123456'),'ho_ten'=>'Nguyễn Hiếu Luân', 'gioi_thieu'=>'gacho', 'sdt'=>'0321312974','email'=>'mczxncmzck@gmail.com' ]
         );
     }
 }
