@@ -24,7 +24,7 @@ class NguoiChoiLoginController extends Controller
             return response()->json(['message'=>'Sai tên đăng nhập hoặc mật khẩu'], 422);
            }
         } catch (JWTAuthException $e) {
-            return response()->json(['failed_to_create_token'], 500);
+            return response()->json(['Failed to create token'], 500);
         }
         $request->headers->set('Authorization','Bearer '.$token);
         return response()->json([

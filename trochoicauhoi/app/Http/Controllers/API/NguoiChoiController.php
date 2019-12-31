@@ -10,81 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class NguoiChoiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   
     public function layBangXepHang(Request $request)
     {
         $page = $request->query('page',1);
@@ -153,45 +79,29 @@ class NguoiChoiController extends Controller
         return response()->json(['success'=>false, 'message'=>'ten_dang_nhap is exist']);
     }
 
-    public function uploadImage(Request $request)
+    public function taiAnhLen($imgCode, $name)
     {
-        // if(auth('api')->check())
-        // {
-            $image = $request->image;  // your base64 encoded
-            $fileName = $request->ten_dang_nhap;
-            $image = str_replace('data:image/png;base64,', '', $image);
-            $image = str_replace(' ', '+', $image);
-            $imageName = $fileName.'.'.'png';
-            \File::put(storage_path(). '\images\users/' . $imageName, base64_decode($image));
+        $image = $imgCode;
+        $fileName = $name;
+        $image = str_replace(' ', '+', $image);
+        $imageName = $fileName.'.'.'png';
+        \File::put(public_path(). '\assets\images\users/' . $imageName, base64_decode($image));
+        return $imageName;
+    }
+
+    public function capNhatThongTin(Request $request)
+    {
+        if(auth('api')->check())
+        {
+            $user = NguoiChoi::find($request->id);
+            $user->email = $request->email;
+            $user->mat_khau = $request->mat_khau;
+            $user->hinh_dai_dien = taiAnhLen($request->image,$request->ten_dang_nhap);
+            $user->save();
             return response()->json(['success'=>true]);
-        //}
-        
+        }
+        return response()->json(['success' => false, 'message' => 'Token is required']);
     }
-    public function PlayerHistory($id)
-    {
-        $playerhistory = LuotChoi::where('nguoi_choi_id',$id)->get();
-        if ( $playerhistory != null ) 
-            return response()->json([
-                'success'=>true,
-                'data'=>$playerhistory;
-            ]);
-        return response()->json(['success'=>false]);
-    }
-    // public function DangNhap(Request $request)
-    // {
-    //     $thongtin = $request->only(['ten_dang_nhap','mat_khau']);
-    //     $nguoichoi = NguoiChoi::where('ten_dang_nhap',$thongtin['ten_dang_nhap'])->first();
-    //     if( $nguoichoi == null )
-    //     {
-    //        $result = ['success'=>false];
-    //        return response()->json($result);
-    //     }
-    //     if( !Hash::check($thongtin['mat_khau'], $nguoichoi->mat_khau ))
-    //     {
-    //         $result = ['success'=>false];
-    //         return response()->json($result);
-    //     }
-    //     $result = ['success'=>true];
-    //     return response()->json($result);
-    // }
+
+    
 }
