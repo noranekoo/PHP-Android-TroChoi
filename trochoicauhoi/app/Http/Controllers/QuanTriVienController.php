@@ -60,9 +60,13 @@ class QuanTriVienController extends Controller
         $request->validate(['ten_input' =>'mimes:png,jpg']);
         if($request->hasFile('ten_input'))
         {
+            $delete = QuanTriVien::find($id);
             $file = $request->ten_input;
+            $delete->anh_dai_dien = $file->getClientOriginalName();
+            $delete->save();
             $file->storeAs('assets/images/users',$file->getClientOriginalName());
-            return "<image url='assets/images/users/".$file->getClientOriginalName()."'' />";
+            alert()->success('','Đổi ảnh đại diện thành công !!'); 
+            return redirect()->route('admin-profile');
         }
         return "upload thất bại";
     }
