@@ -70,7 +70,7 @@ class NguoiChoiController extends Controller
         $nguoiChoi->email = $request->email;
         $nguoiChoi->hinh_dai_dien = 'default.png';
         $nguoiChoi->diem_cao_nhat = 0;
-        $nguoiChoi->credit = 0;
+        $nguoiChoi->credit = 2000;
         if(NguoiChoi::where('ten_dang_nhap','=',$nguoiChoi->ten_dang_nhap)->count() == 0)
         {
             $nguoiChoi->save();
