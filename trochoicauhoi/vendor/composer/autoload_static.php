@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit974f0c9df703092a0a35cd1663e996e0
+class ComposerStaticInit87ef5b587cef6d5e80c008b7f5bd59b3
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -447,6 +447,8 @@ class ComposerStaticInit974f0c9df703092a0a35cd1663e996e0
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\GoiCredit' => __DIR__ . '/../..' . '/app/GoiCredit.php',
+        'App\\Http\\Controllers\\API\\CauHinhAppController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/CauHinhAppController.php',
+        'App\\Http\\Controllers\\API\\CauHinhController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/CauHinhController.php',
         'App\\Http\\Controllers\\API\\CauHoiController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/CauHoiController.php',
         'App\\Http\\Controllers\\API\\GoiCreditController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/GoiCreditController.php',
         'App\\Http\\Controllers\\API\\LinhVucController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/LinhVucController.php',
@@ -4462,6 +4464,7 @@ class ComposerStaticInit974f0c9df703092a0a35cd1663e996e0
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\See' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/See.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Since' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Since.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Source' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Source.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tags\\TagWithType' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/TagWithType.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Throws' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Throws.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Uses' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Uses.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Var_' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Var_.php',
@@ -4503,10 +4506,10 @@ class ComposerStaticInit974f0c9df703092a0a35cd1663e996e0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit974f0c9df703092a0a35cd1663e996e0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit974f0c9df703092a0a35cd1663e996e0::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit974f0c9df703092a0a35cd1663e996e0::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit974f0c9df703092a0a35cd1663e996e0::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit87ef5b587cef6d5e80c008b7f5bd59b3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit87ef5b587cef6d5e80c008b7f5bd59b3::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit87ef5b587cef6d5e80c008b7f5bd59b3::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit87ef5b587cef6d5e80c008b7f5bd59b3::$classMap;
 
         }, null, ClassLoader::class);
     }
