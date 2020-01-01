@@ -25,10 +25,10 @@ Route::get('dang-nhap','QuanTriVienController@dangNhap')->name('dangnhap')->midd
 Route::get('dang-xuat','QuanTriVienController@dangXuat')->name('dangxuat');
 Route::post('dang-nhap','QuanTriVienController@xuLyDangNhap')->name('dangnhap.xuly');
 Route::middleware('auth')->group(function(){
-	Route::get('/',function(){
-		return view('dashboard');
-	})->name('dashboard');
-	
+	Route::get('/','ThongKeController@index')->name('dashboard');
+	Route::get('developer',function(){
+		return view('developer');
+	})->name('developer');
 	Route::prefix('admin-profile')->group(function(){
 		Route::get('/','QuanTriVienController@index')->name('admin-profile');
 		Route::post('/{id}','QuanTriVienController@update')->name('admin-profile.post');

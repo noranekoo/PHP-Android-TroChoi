@@ -87,7 +87,7 @@
                                 <div class="tab-pane" id="avatar">
                                     <form action="{{route('change-avatar',Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        <input type="file" name="ten_input" multiple >
+                                        <input type="file" name="ten_input"  >
                                         <div class="text-left">
                                             <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i class="mdi mdi-content-save"></i> Lưu</button>
                                         </div>

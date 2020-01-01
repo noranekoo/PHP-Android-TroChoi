@@ -176,7 +176,10 @@
                                     </li>
                                 </ul>
                             </li>
-
+                            <li>
+                                <a href="{{route('developer')}}"> <i class="fe-codepen"></i>Lập trình viên</a>
+                                <ul class="submenu">
+                            </li>
                             
                                 </ul>
                             </li>
