@@ -102,5 +102,18 @@ class NguoiChoiController extends Controller
         return response()->json(['success' => false, 'message' => 'Token is required']);
     }
 
+    public function capNhatSauKhiChoi(Request $request)
+    {
+        if(auth('api')->check())
+        {
+            $user = NguoiChoi::find($request->id);
+            if($request->diem > $user->diem_cao_nhat)
+                $user->diem_cao_nhat = (int)$request->diem;
+            $user->credit = (int)$request->credit;
+            $user->save();
+            return response()->json(['success'=>true, 'diem_cao_nhat'=>$user->diem_cao_nhat]);
+        }
+        return response()->json(['success' => false, 'message' => 'Token is required']);
+    }
     
 }

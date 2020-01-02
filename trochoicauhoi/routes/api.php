@@ -24,6 +24,7 @@ Route::get('cau-hinh-app','API\CauHinhController@layCauHinhApp');
 Route::get('cau-hinh-diem','API\CauHinhController@layCauHinhDiem');
 Route::get('cau-hinh-tro-giup','API\CauHinhController@layCauHinhTroGiup');
 Route::post('cap-nhat-thong-tin','API\NguoiChoiController@capNhatThongTin');
+Route::post('cap-nhat-game','API\NguoiChoiController@capNhatSauKhiChoi');
 Route::get('updateAvatar','API\NguoiChoiController@taiAnhLen');
 Route::get('diem-cao','API\NguoiChoiController@top10');
 Route::get('credit','API\GoiCreditController@layCredit');
