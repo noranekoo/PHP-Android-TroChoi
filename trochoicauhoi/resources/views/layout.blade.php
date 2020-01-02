@@ -110,7 +110,7 @@
 
                             <li>
                                 <a href="/">
-                                    <i class="la la-dashboard"></i>Dashboards </a>
+                                    <i class="la la-dashboard"></i>Thống kê </a>
                                
                             </li>
 
