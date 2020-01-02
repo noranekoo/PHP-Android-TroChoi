@@ -37,6 +37,7 @@ return array(
     'App\\Http\\Controllers\\LinhVucController' => $baseDir . '/app/Http/Controllers/LinhVucController.php',
     'App\\Http\\Controllers\\NguoiChoiController' => $baseDir . '/app/Http/Controllers/NguoiChoiController.php',
     'App\\Http\\Controllers\\QuanTriVienController' => $baseDir . '/app/Http/Controllers/QuanTriVienController.php',
+    'App\\Http\\Controllers\\ThongKeController' => $baseDir . '/app/Http/Controllers/ThongKeController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\AssignGuard' => $baseDir . '/app/Http/Middleware/AssignGuard.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

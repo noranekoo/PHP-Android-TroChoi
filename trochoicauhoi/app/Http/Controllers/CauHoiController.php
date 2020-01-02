@@ -111,6 +111,7 @@ class CauHoiController extends Controller
     {
         $cauhoi = CauHoi::find($id);
         $cauhoi->delete();
+        alert()->success('', 'Xóa thành công !!');
         return redirect()->route('cauhoi')->with('success','Xóa thành công!!');
     }
      public function forceDelete($id)
