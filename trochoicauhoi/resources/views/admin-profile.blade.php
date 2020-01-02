@@ -68,7 +68,7 @@
                             <ul class="nav nav-pills navtab-bg">
                                 <li class="nav-item">
                                     <a href="#timeline" data-toggle="tab" aria-expanded="true" class="nav-link active">
-                                        <i class="mdi mdi-settings-outline mr-1"></i>Cài đặt
+                                        <i class="mdi mdi-settings-outline mr-1"></i>Thông tin
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -97,7 +97,7 @@
                                      <form method="POST" action="{{route('change-password',Auth::user()->id)}}">
                                         @csrf
                                         <h5 class="mb-3 text-uppercase bg-light p-2">
-                                        <i class="mdi mdi-account-circle mr-1"></i> Thông tin</h5>
+                                        <i class="mdi mdi-account-circle mr-1"></i> Đổi mật khẩu</h5>
                                         
                                         <div class="row">
                                             <div class="col-md-12">
