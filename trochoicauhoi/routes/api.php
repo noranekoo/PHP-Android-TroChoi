@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('sendmail/{email}','SendMailController@basic_email');
+Route::get('guimail/{email}','SendMailController@basic_email');
 Route::get('linh-vuc','API\LinhVucController@index');
 Route::get('cau-hoi','API\CauHoiController@layDSCauHoi');
 Route::get('cau-hoi/{id}','API\CauHoiController@show');
@@ -29,7 +29,7 @@ Route::post('cap-nhat-game','API\NguoiChoiController@capNhatSauKhiChoi');
 Route::get('updateAvatar','API\NguoiChoiController@taiAnhLen');
 Route::get('diem-cao','API\NguoiChoiController@top10');
 Route::get('credit','API\GoiCreditController@layCredit');
-Route::get('luot-choi/{id}','API\NguoiChoiController@lichSuChoi');
+Route::get('luot-choi','API\NguoiChoiController@lichSuChoi');
 Route::get('nguoi-choi','API\NguoiChoiController@layBangXepHang');
 Route::post('dang-nhap', 'API\NguoiChoiLoginController@login');
 Route::post('dang-ky','API\NguoiChoiController@dangKy');

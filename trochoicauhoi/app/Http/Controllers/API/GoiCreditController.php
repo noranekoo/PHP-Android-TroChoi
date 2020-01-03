@@ -9,7 +9,8 @@ use App\GoiCredit;
 class GoiCreditController extends Controller
 {
 
-    public function layCredit(){
+    public function layCredit()
+    {
         if(auth('api')->check())
         {
             $dsCredit = GoiCredit::all();
