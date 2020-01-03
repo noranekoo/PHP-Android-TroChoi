@@ -28,6 +28,19 @@ class NguoiChoiController extends Controller
         return response()->json(['success'=>false, 'message'=>'Token is required']);
         
     }
+
+    public function muaCredit(Request $request)
+    {
+        if(auth('api')->check())
+        {
+            $user = NguoiChoi::find($request->id);
+            $user->credit = $request->credit;
+            $user->save();
+            return response()->json(['success'=>true]);
+        }
+        return response()->json(['success'=>false, 'message'=>'Token is required']);
+    }
+
     public function layNguoiChoi($id)
     {
         if(auth('api')->check())
@@ -77,8 +90,10 @@ class NguoiChoiController extends Controller
             $lc->so_cau = $request->so_cau;
             $lc->diem = $request->diem;
             $lc->ngay_gio = $request->ngay_gio;
+            $lc->save();
+            return response()->json(['success'=>true]);
         }
-
+        return response()->json(['success' => false, 'message' => 'Token is required']);
     }
 
     public function dangKy(Request $request)
