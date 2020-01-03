@@ -57,9 +57,6 @@ class NguoiChoiController extends Controller
         $limit = $request->query('limit',25);
         if(auth('api')->check())
         {
-            // $lichSuChoi = LuotChoi::where('nguoi_choi_id',$id)->get();
-            // $result = ['total'=>$lichSuChoi->count(), 'data'=>$lichSuChoi];
-            // return response()->json($result);
             $lichSuChoi = LuotChoi::where('nguoi_choi_id',$request->id);
             $lichSuChoi = $lichSuChoi->orderBy('ngay_gio','desc')->skip(($page-1)*$limit)->take($limit)->get();
             return response()->json(
@@ -69,6 +66,19 @@ class NguoiChoiController extends Controller
                 ]);
         }
         return response()->json(['success' => false, 'message' => 'Token is required']);
+    }
+
+    public function capNhatLichSu(Request $request)
+    {
+        if(auth('api')->check())
+        {
+            $lc = new LuotChoi();
+            $lc->nguoi_choi_id = $request->id;
+            $lc->so_cau = $request->so_cau;
+            $lc->diem = $request->diem;
+            $lc->ngay_gio = $request->ngay_gio;
+        }
+
     }
 
     public function dangKy(Request $request)
