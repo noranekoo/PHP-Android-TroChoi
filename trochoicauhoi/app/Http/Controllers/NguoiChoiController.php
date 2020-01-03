@@ -5,6 +5,7 @@ use App\Http\Requests\NguoiChoiRequest;
 use Illuminate\Http\Request;
 use App\NguoiChoi;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Hash;
 
 class NguoiChoiController extends Controller
 {
@@ -38,7 +39,7 @@ class NguoiChoiController extends Controller
     {
         $nguoichoi = new NguoiChoi;
         $nguoichoi->ten_dang_nhap = $request->input('ten_dang_nhap');
-        $nguoichoi->mat_khau = $request->input('mat_khau');
+        $nguoichoi->mat_khau = Hash::make($request->input('mat_khau'));
         $nguoichoi->email = $request->input('email');
         if( !$request->hasFile('hinh_dai_dien'))
             $nguoichoi->hinh_dai_dien = '';
