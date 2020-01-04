@@ -24,7 +24,7 @@ class CauHinhDiemCauHoiRequest extends FormRequest
      public function rules()
     {
         return [
-            'thu_tu'=>'bail|required|numeric|min:1',
+            'thu_tu'=>'bail|required|numeric|min:1|unique:cau_hinh_diem_cau_hoi,thu_tu',
             'diem'=>'bail|required|numeric|min:1'
         ];
     }
@@ -34,6 +34,7 @@ class CauHinhDiemCauHoiRequest extends FormRequest
             'thu_tu.required'=>'Thứ tự không được để trống !!',
             'thu_tu.numeric'=>'Thứ tự phải là số !!',
             'thu_tu.min'=>'Thứ tự không được bé hơn 1 !!',
+            'thu_tu.unique'=>'Thứ tự bị trùng !',
             'diem.required'=>'Điểm trả lời không được để trống !!',
             'diem.numeric'=>'Điểm trả lời phải số !!',
             'diem.min'=>'Điểm trả lời không được bé hơn 1'

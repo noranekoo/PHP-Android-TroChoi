@@ -21,15 +21,15 @@ class CauHinhTroGiupRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+     public function rules()
     {
         return [
             'loai_tro_giup'=>'bail|required|numeric|min:1|max:4',
-            'thu_tu'=>'bail|required|numeric|min:1|max:4',
+            'thu_tu'=>'bail|required|numeric|min:1|max:4:cau_hinh_tro_giup,thu_tu',
             'credit'=>'bail|required|numeric|min:0'
         ];
     }
-    public function messsage()
+     public function messsage()
     {
         return [
             'loai_tro_giup.required'=>'Loại trợ giúp không được để trống !!',
@@ -40,6 +40,7 @@ class CauHinhTroGiupRequest extends FormRequest
             'thu_tu.numeric'=>'Thứ tự phải số !!',
             'thu_tu.min'=>'Thứ tự không được bé hơn 1',
             'thu_tu.max'=>'Thứ tự không được lớn hơn 4',
+            'thu_tu.unique'=>'Thứ tự bị trùng !',
             'credit.required'=>'Credit không được để trống !!',
             'credit.numeric'=>'Credit phải số !!',
             'credit.min'=>'Credit không được bé hơn 1'

@@ -55,10 +55,10 @@ class QuanTriVienController extends Controller
         Auth::logout();
         return view('log-out');
     }
-     public function xuLyUpLoad(Request $request)
+     public function xuLyUpLoad(Request $request,$id)
     {
         $request->validate(['ten_input' =>'mimes:png,jpg']);
-        if($request->hasFile('ten_input'))
+         if($request->hasFile('ten_input'))
         {
             $delete = QuanTriVien::find($id);
             $file = $request->ten_input;
@@ -68,7 +68,8 @@ class QuanTriVienController extends Controller
             alert()->success('','Đổi ảnh đại diện thành công !!'); 
             return redirect()->route('admin-profile');
         }
-        return "upload thất bại";
+        alert()->error('','Đổi ảnh đại diện thất bại !!'); 
+            return redirect()->route('admin-profile');
     }
 
     /**
