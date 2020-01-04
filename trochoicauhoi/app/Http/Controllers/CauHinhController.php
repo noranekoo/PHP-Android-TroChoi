@@ -137,7 +137,7 @@ class CauHinhController extends Controller
         return redirect()->route('cauhinh.diem');
     }
 
-    public function editCauHinhDiemTroGiup(CauHinhTroGiupRequest $request,$id)
+    public function editCauHinhTroGiup(CauHinhTroGiupRequest $request,$id)
     {
         $CauHinhTroGiup = CauHinhTroGiup::find($id);
         $CauHinhTroGiup->loai_tro_giup = $request->input('loai_tro_giup');

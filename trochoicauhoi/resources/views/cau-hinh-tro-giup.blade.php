@@ -76,26 +76,26 @@
            	 route('cauhinh.trogiup.store') }}" 
                method="POST">
               	@csrf
-              	@if(isset($CauHinh))
+                @if(isset($CauHinh))
                   <div class="form-group">
                       <label for="exampleInputEmail1">ID</label>
-                      <input type="text" class="form-control" id="exampleInputEmail1" value="{{ isset($CauHinh->id) ? $CauHinh->id : ''}}" aria-describedby="emailHelp" disabled="true">
+                      <input type="text" class="form-control" id="exampleInputEmail1" value="{{ isset($CauHinh) ? $CauHinh->id : ''}}" aria-describedby="emailHelp" disabled="true">
                   </div>
                   @endif
                   <div class="form-group">
                       <label for="exampleInputPassword1">Loại trợ giúp</label>
                       <input type="text" class="form-control" id="exampleInputPassword1" 
-                      value="{{ isset($CauHinh->id) ? $CauHinh->thu_tu : ''}}" name="loai_tro_giup" >
+                      value="{{ isset($CauHinh) ? $CauHinh->loai_tro_giup : ''}}" name="loai_tro_giup" >
                   </div>
                   <div class="form-group">
                       <label for="exampleInputPassword1">Thứ tự</label>
                       <input type="text" class="form-control" id="exampleInputPassword1" 
-                      value="{{ isset($CauHinh->id) ? $CauHinh->diem : ''}}" name="thu_tu" >
+                      value="{{ isset($CauHinh) ? $CauHinh->thu_tu : ''}}" name="thu_tu" >
                   </div>
                    <div class="form-group">
                       <label for="exampleInputPassword1">Credit</label>
                       <input type="text" class="form-control" id="exampleInputPassword1" 
-                      value="{{ isset($CauHinh->id) ? $CauHinh->diem : ''}}" name="credit" >
+                      value="{{ isset($CauHinh) ? $CauHinh->credit : ''}}" name="credit" >
                   </div>
                   <button type="submit" class="btn btn-primary waves-effect waves-light">{{ isset($CauHinh) ? 'Cập nhật' : 'Thêm mới'  }}</button>
               </form>

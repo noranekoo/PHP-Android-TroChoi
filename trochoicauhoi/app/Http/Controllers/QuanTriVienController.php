@@ -55,7 +55,7 @@ class QuanTriVienController extends Controller
         Auth::logout();
         return view('log-out');
     }
-     public function xuLyUpLoad(Request $request)
+     public function xuLyUpLoad(Request $request,$id)
     {
         $request->validate(['ten_input' =>'mimes:png,jpg']);
          if($request->hasFile('ten_input'))
